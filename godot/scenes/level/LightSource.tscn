@@ -8,3 +8,7 @@ script = ExtResource( 2 )
 
 [node name="Gradient" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
