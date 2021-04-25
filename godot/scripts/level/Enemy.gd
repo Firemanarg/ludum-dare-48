@@ -97,6 +97,7 @@ func _on_Area2D_body_entered(body: Node) -> void:
 
 func patrol() -> void:
 	if patrol == true && next_patrol_position == self.transform.origin:
+		speed = 100.0
 		i = (i + 1) % position_list.size()
 		next_patrol_position = position_list[i]
 		go_in_a_place(next_patrol_position)

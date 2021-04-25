@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/Characters/Robi.png" type="Texture" id=1]
 [ext_resource path="res://assets/Characters/Shadow.png" type="Texture" id=2]
@@ -11,6 +11,54 @@ height = 2.4972
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 17.6844
 height = 4.33257
+
+[sub_resource type="Animation" id=3]
+resource_name = "Idle_backward"
+
+[sub_resource type="Animation" id=4]
+resource_name = "Idle_foward"
+
+[sub_resource type="Animation" id=11]
+resource_name = "idle_backward_left"
+
+[sub_resource type="Animation" id=12]
+resource_name = "idle_backward_right"
+
+[sub_resource type="Animation" id=13]
+resource_name = "idle_foward_left"
+
+[sub_resource type="Animation" id=14]
+resource_name = "idle_foward_right"
+
+[sub_resource type="Animation" id=5]
+resource_name = "idle_left"
+
+[sub_resource type="Animation" id=6]
+resource_name = "idle_right"
+
+[sub_resource type="Animation" id=7]
+resource_name = "walk_backward"
+
+[sub_resource type="Animation" id=15]
+resource_name = "walk_backward_left"
+
+[sub_resource type="Animation" id=16]
+resource_name = "walk_backward_right"
+
+[sub_resource type="Animation" id=8]
+resource_name = "walk_foward"
+
+[sub_resource type="Animation" id=17]
+resource_name = "walk_foward_left"
+
+[sub_resource type="Animation" id=18]
+resource_name = "walk_foward_right"
+
+[sub_resource type="Animation" id=9]
+resource_name = "walk_left"
+
+[sub_resource type="Animation" id=10]
+resource_name = "walk_right"
 
 [node name="Enemy" type="KinematicBody2D"]
 collision_layer = 2
@@ -39,6 +87,24 @@ collision_layer = 2
 light_mask = 2
 position = Vector2( -0.333694, -18.6878 )
 shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Idle_backward = SubResource( 3 )
+anims/Idle_foward = SubResource( 4 )
+anims/idle_backward_left = SubResource( 11 )
+anims/idle_backward_right = SubResource( 12 )
+anims/idle_foward_left = SubResource( 13 )
+anims/idle_foward_right = SubResource( 14 )
+anims/idle_left = SubResource( 5 )
+anims/idle_right = SubResource( 6 )
+anims/walk_backward = SubResource( 7 )
+anims/walk_backward_left = SubResource( 15 )
+anims/walk_backward_right = SubResource( 16 )
+anims/walk_foward = SubResource( 8 )
+anims/walk_foward_left = SubResource( 17 )
+anims/walk_foward_right = SubResource( 18 )
+anims/walk_left = SubResource( 9 )
+anims/walk_right = SubResource( 10 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
