@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/actors/Player.tscn" type="PackedScene" id=1]
+
+[sub_resource type="Gradient" id=1]
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[node name="World" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+visible = false
+polygon = PoolVector2Array( 0, 0, 1024, 0, 1024, 608, 0, 608, 0, 128, 64, 256, 32, 480, 160, 480, 224, 544, 416, 448, 832, 544, 928, 416, 832, 288, 928, 192, 736, 32, 736, 128, 544, 96, 256, 128, 32, 64, 0, 128 )
+disabled = true
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 565.082, 368.313 )
+scale = Vector2( 0.490864, 663.626 )
+texture = SubResource( 2 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 543.672, 368.111 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+smoothing_enabled = true
+smoothing_speed = 3.0
