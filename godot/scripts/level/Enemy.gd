@@ -7,19 +7,18 @@ onready var timer = get_node("Timer")
 export var seek_delay : int = 2
 var last_seen = null
 var seek = false
-var timeout = false
 
 func _ready() -> void:
 	pass
 
-#func _unhandled_input(event: InputEvent) -> void:
-#	if not event is InputEventMouseButton:
-#		return
-#	if event.button_index != BUTTON_LEFT or not event.pressed:
-#		return
-#	speed = 250.0
-#	go_in_a_place(Global.player.transform.origin)
-#	last_seen = Global.player.transform.origin
+func _unhandled_input(event: InputEvent) -> void:
+	if not event is InputEventMouseButton:
+		return
+	if event.button_index != BUTTON_LEFT or not event.pressed:
+		return
+	speed = 250.0
+	last_seen = Global.player.transform.origin
+	go_in_a_place(last_seen)
 
 
 func _physics_process(delta: float) -> void:
@@ -29,16 +28,13 @@ func _physics_process(delta: float) -> void:
 	
 #	print(timer.time_left)
 	# I need to fix the code bellow and make a func, this timer only works one time ************
-#	if self.transform.origin == last_seen:
-#		if seek == false:
-#			timer.wait_time = seek_delay
-#			seek = true
-#			timeout = false
-#			timer.start()
-#		else:
-#			if timeout == true:
-#				timer.stop()
-#				seek == false
+	if self.transform.origin == last_seen:
+		if seek == false:
+			print("ainnn entro")
+			timer.wait_time = seek_delay
+			seek = true
+			timer.start()
+
 
 func move_along_path(distance : float) -> void:
 	var last_point : = position
@@ -72,14 +68,17 @@ func go_in_a_place(where) -> void:
 	path = new_path
 
 func _on_Timer_timeout() -> void:
-	timeout = true
 	speed = 150.0
+	print("entrei ainnnn")
 	go_in_a_place(starting_position)
+	seek = false;
 
 func near_attack() -> void:
-	if self.transform.origin.distance_to(Global.player.transform.origin) < 800 && Global._playerLife > 0:
+	if self.transform.origin.distance_to(Global.player.transform.origin) < 200 && Global._playerLife > 0:
 		speed = 250.0
 		go_in_a_place(Global.player.transform.origin)
+		timer.wait_time = seek_delay
+		timer.start()
 
 
 func _on_Area2D_body_entered(body: Node) -> void:
