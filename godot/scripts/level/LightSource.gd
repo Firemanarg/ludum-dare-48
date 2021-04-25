@@ -1,6 +1,7 @@
 extends Node2D
 class_name LightSource
 
+export var activable = false	# True if player can interact with this light source
 onready var gradient = get_node("Gradient")
 
 var min_radius = 64
@@ -40,4 +41,6 @@ func current_radius():
 
 
 func update_visual_radius():
-
+	var texture_size = gradient.texture.get_size()
+	var adjust_factor = texture_size / min_radius
+	var final_size = texture_size
