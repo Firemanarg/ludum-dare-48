@@ -5,6 +5,8 @@
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 uniform vec2 player_position;
+uniform sampler2D light_sources_uv;
+uniform sampler2D light_sources_radius;
 uniform vec4 color : hint_color = vec4(0.305, 0.298, 0.341,1);
 
 uniform float MULTIPLIER = 0.56;
@@ -36,8 +38,8 @@ void fragment(){
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
-shader_param/player_position = null
-shader_param/color = Color( 0.305, 0.298, 0.341, 1 )
+shader_param/player_position = Vector2( 0, 0 )
+shader_param/color = Color( 0.0823529, 0.0823529, 0.0823529, 1 )
 shader_param/MULTIPLIER = 0.56
 shader_param/SCALE = 0.5
 shader_param/SOFTNESS = 0.65

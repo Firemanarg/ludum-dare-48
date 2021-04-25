@@ -70,3 +70,6 @@ func update_visual_radius():
 	tween.interpolate_property(gradient, "scale", last_scale, target_scale, tween_duration, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	tween.start()
 	pass
+
+func turn_off():
+	pass
