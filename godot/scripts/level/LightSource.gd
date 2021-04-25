@@ -1,7 +1,6 @@
 extends Node2D
 class_name LightSource
 
-export var activable = false	# True if player can interact with this light source
 onready var gradient = get_node("Gradient")
 
 var min_radius = 64
@@ -9,6 +8,9 @@ var max_radius = 512
 var current_prc = 0.6
 var prc_step = 0.2
 
+
+func _init() -> void:
+	pass
 
 func _ready() -> void:
 	pass
