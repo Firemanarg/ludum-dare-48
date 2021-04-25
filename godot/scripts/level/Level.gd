@@ -5,4 +5,4 @@ func _ready() -> void:
 	Global.player = get_node("Player")
 	Global.Enemy = get_node("Enemy")
 	Global._playerLife = 1
-	
+
