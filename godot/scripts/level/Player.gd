@@ -13,7 +13,7 @@ func _physics_process(delta):
 	motion = move_and_slide(motion)
 
 func get_input_axis():
-	var axis = Vector2.ZERO	
+	var axis = Vector2.ZERO
 	axis.x = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left")) #configurar outras teclas pelo key map depois
 	axis.y = int(Input.is_action_pressed("move_backward")) - int(Input.is_action_pressed("move_forward"))
 	return axis.normalized()

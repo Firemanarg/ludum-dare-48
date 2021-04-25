@@ -12,3 +12,4 @@ texture = ExtResource( 1 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true

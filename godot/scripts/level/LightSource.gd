@@ -18,6 +18,7 @@ var prc_step = 0.2
 var tween_duration = 0.2
 
 func _ready() -> void:
+	timer.connect("timeout", self, "on_timer_timeout")
 	pass
 
 
@@ -33,7 +34,7 @@ func _process(delta: float) -> void:
 		else:
 			set_current_prc(current_prc + prc_step)
 	if step_down:
-		if current_prc - prc_step < 0.00:
+		if current_prc - prc_step < 0.0:
 			set_current_prc(0.0)
 		else:
 			set_current_prc(current_prc - prc_step)
@@ -56,10 +57,21 @@ func calculate_radius(prc: float):
 	return Global.map(prc, 0.00, 1.0, min_radius, max_radius)
 
 func set_current_prc(value):
-	if value >= 0.0 and value <= 1.0:
-		last_prc = current_prc
+	last_prc = current_prc
+
+	if value > 0.0 and value < 1.0:
 		current_prc = value
-		update_visual_radius()
+
+	elif value == 0.0:
+		current_prc = 0.0
+		turn_off()
+
+	elif value == 1.0:
+		current_prc = 1.0
+		turn_on()
+
+	update_visual_radius()
+
 
 func update_visual_radius():
 	var last_scale_factor = Global.map(last_radius(), min_radius, max_radius, min_scale, max_scale)
@@ -72,4 +84,13 @@ func update_visual_radius():
 	pass
 
 func turn_off():
+	timer.wait_time = tween_duration
+	timer.start()
 	pass
+
+func turn_on():
+	gradient.visible = true
+	pass
+
+func on_timer_timeout():
+	gradient.visible = false
