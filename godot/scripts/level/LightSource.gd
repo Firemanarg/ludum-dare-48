@@ -60,6 +60,7 @@ func set_current_prc(value):
 	last_prc = current_prc
 
 	if value > 0.0 and value < 1.0:
+		gradient.visible = true
 		current_prc = value
 
 	elif value == 0.0:
