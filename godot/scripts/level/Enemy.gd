@@ -2,14 +2,19 @@ extends KinematicBody2D
 
 var speed : = 250.0
 var path : = PoolVector2Array() setget set_path
-var starting_position : = self.transform.origin
+var next_patrol_position : = self.transform.origin
 onready var timer = get_node("Timer")
 export var seek_delay : int = 2
 var last_seen = null
 var seek = false
+var position_list: PoolVector2Array
+var i : int = 0
+var patrol: bool = false
 
 func _ready() -> void:
-	pass
+	position_list.append(Vector2(-299,400))
+	position_list.append(Vector2(-299,-37))
+	position_list.append(Vector2(-77,199))
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not event is InputEventMouseButton:
@@ -24,10 +29,9 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	var move_distance = speed * delta
 	move_along_path(move_distance)
-	near_attack()
+	light_detect()
+	patrol()
 	
-#	print(timer.time_left)
-	# I need to fix the code bellow and make a func, this timer only works one time ************
 	if self.transform.origin == last_seen:
 		if seek == false:
 			print("ainnn entro")
@@ -69,16 +73,19 @@ func go_in_a_place(where) -> void:
 
 func _on_Timer_timeout() -> void:
 	speed = 150.0
-	print("entrei ainnnn")
-	go_in_a_place(starting_position)
+#	print("entrei ainnnn")
+	go_in_a_place(next_patrol_position)
 	seek = false;
 
-func near_attack() -> void:
+func light_detect() -> void:
 	if self.transform.origin.distance_to(Global.player.transform.origin) < 200 && Global._playerLife > 0:
 		speed = 250.0
 		go_in_a_place(Global.player.transform.origin)
+		patrol = false
+	elif patrol == false:
 		timer.wait_time = seek_delay
 		timer.start()
+		patrol = true
 
 
 func _on_Area2D_body_entered(body: Node) -> void:
@@ -87,3 +94,10 @@ func _on_Area2D_body_entered(body: Node) -> void:
 		Global._playerLife -= 1
 		if(Global._playerLife <= 0):
 			print("You died !!!")
+
+func patrol() -> void:
+	if patrol == true && next_patrol_position == self.transform.origin:
+		i = (i + 1) % position_list.size()
+		next_patrol_position = position_list[i]
+		go_in_a_place(next_patrol_position)
+		
