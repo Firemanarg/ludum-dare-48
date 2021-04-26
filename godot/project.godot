@@ -14,20 +14,26 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/maujoe.custom_gradient_texture/custom_gradient_texture.gd"
 }, {
-"base": "Node2D",
+"base": "LightSource",
+"class": "InteractiveLightSource",
+"language": "GDScript",
+"path": "res://scripts/level/LightSources/InteractiveLightSource.gd"
+}, {
+"base": "Light2D",
 "class": "LightSource",
 "language": "GDScript",
-"path": "res://scripts/level/LightSource.gd"
+"path": "res://scripts/level/LightSources/LightSource.gd"
 } ]
 _global_script_class_icons={
 "CustomGradientTexture": "",
+"InteractiveLightSource": "",
 "LightSource": ""
 }
 
 [application]
 
 config/name="Ludum Dare 48"
-run/main_scene="res://scenes/level/World.tscn"
+run/main_scene="res://Teste Light v2.tscn"
 config/icon="res://icon.png"
 
 [autoload]

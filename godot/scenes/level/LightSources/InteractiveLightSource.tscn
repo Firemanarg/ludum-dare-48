@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/level/LightSources/LightSource.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/level/LightSources/InteractiveLightSource.gd" type="Script" id=2]
+
+[node name="InteractiveLightSource" instance=ExtResource( 1 )]
+texture_scale = 0.825
+script = ExtResource( 2 )
