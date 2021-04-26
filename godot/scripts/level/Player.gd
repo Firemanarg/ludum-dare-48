@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+onready var light_source = get_node("PlayerLightSource")
+
 var MAX_SPEED: = 300
 var ACCELERATION: = 2000
 var motion: = Vector2.ZERO
