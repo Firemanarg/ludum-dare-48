@@ -13,7 +13,7 @@ var i : int = 0
 var last_axis = Vector2(1,0)
 onready var animation = get_node("AnimationPlayer")
 var patrol: bool = false
-var vision_range = 200
+var vision_range = 300
 
 func _ready() -> void:
 	position_list.append(Vector2(-299,400))
@@ -81,12 +81,14 @@ func is_light_source_on_range(light_source: LightSource):
 
 func light_detect() -> void:
 	# Check if player light source is visible by enemy
-	if Global.player and is_light_source_on_range(Global.player):
+	if Global.player and is_light_source_on_range(Global.player.light_source):
+		print("Target = Player")
 		speed = 250.0
 		go_in_a_place(Global.player.light_source.transform.origin)
 		patrol = false
 
 	elif Global.light_sources:
+		print("Target = Light Source")
 		speed = 250.0
 
 		var nearest_light_source = null
@@ -104,9 +106,11 @@ func light_detect() -> void:
 			go_in_a_place(Global.player.light_source.transform.origin)
 			patrol = false
 	elif patrol == false:
+		print("Target = Patrol")
 		timer.wait_time = seek_delay
 		timer.start()
 		patrol = true
+
 #	if self.transform.origin.distance_to(Global.player.transform.origin) < 200 && Global._playerLife > 0:
 #		speed = 250.0
 #		go_in_a_place(Global.player.transform.origin)
@@ -169,7 +173,7 @@ func animation(axis) -> void:
 		elif axis.x < 0 && axis.y < 0:
 			next_animation = "enemy_walk_foward_left"
 	last_axis = axis
-	if next_animation != animation.current_animation:
-		animation.play(next_animation)
+#	if next_animation != animation.current_animation:
+#		animation.play(next_animation)
 #		print(animation.current_animation)
 
