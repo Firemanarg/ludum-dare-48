@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 	move_along_path(move_distance)
 	light_detect()
 	patrol()
-	
+
 	if self.transform.origin == last_seen:
 		if seek == false:
 			print("ainnn entro")
@@ -101,4 +101,4 @@ func patrol() -> void:
 		i = (i + 1) % position_list.size()
 		next_patrol_position = position_list[i]
 		go_in_a_place(next_patrol_position)
-		
+

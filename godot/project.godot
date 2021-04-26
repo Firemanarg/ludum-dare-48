@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "BaseLevel",
+"language": "GDScript",
+"path": "res://scripts/level/PlayableLevels/BaseLevel.gd"
+}, {
 "base": "ImageTexture",
 "class": "CustomGradientTexture",
 "language": "GDScript",
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://scripts/level/LightSources/LightSource.gd"
 } ]
 _global_script_class_icons={
+"BaseLevel": "",
 "CustomGradientTexture": "",
 "InteractiveLightSource": "",
 "LightSource": ""
@@ -33,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Ludum Dare 48"
-run/main_scene="res://Teste Light v2.tscn"
+run/main_scene="res://scenes/level/PlayableLevels/BaseLevel.tscn"
 config/icon="res://icon.png"
 
 [autoload]

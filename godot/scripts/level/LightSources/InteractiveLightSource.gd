@@ -9,6 +9,7 @@ onready var lifetime = 2.0
 
 func _ready() -> void:
 	consume_timer.connect("timeout", self, "turn_off")
+	turn_on()
 	pass
 
 func _process(delta: float) -> void:
@@ -36,3 +37,4 @@ func map(value, low1, high1, low2, high2):
 #func set_radius(radius: float):
 #	var fixed_radius = clamp(radius, min_radius, max_radius)
 #	return Global.map(fixed_radius, min_radius, max_radius, 0, light_steps-1)
+

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/parado.png-efa695aabbfd48bd0ee1089b9875ff6e.stex"
+path="res://.import/parado.png-c9677ddf97b391cdf2c3f5dd2cb6c5ca.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/player/parado.png"
-dest_files=[ "res://.import/parado.png-efa695aabbfd48bd0ee1089b9875ff6e.stex" ]
+source_file="res://assets/textures/player/Idle/parado.png"
+dest_files=[ "res://.import/parado.png-c9677ddf97b391cdf2c3f5dd2cb6c5ca.stex" ]
 
 [params]
 

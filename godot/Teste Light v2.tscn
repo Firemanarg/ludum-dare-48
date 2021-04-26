@@ -4,12 +4,12 @@
 [ext_resource path="res://scenes/level/LightSources/PlayerLightSource.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/level/LightSources/InteractiveLightSource.tscn" type="PackedScene" id=3]
 
-[sub_resource type="Gradient" id=1]
+[sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0, 0.466258, 1 )
 colors = PoolColorArray( 0, 0, 0, 1, 0.371094, 0.181198, 0.181198, 1, 0.25058, 0.398364, 0.628906, 1 )
 
 [sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
+gradient = SubResource( 4 )
 width = 1024
 
 [sub_resource type="StreamTexture" id=3]
@@ -31,10 +31,10 @@ texture = SubResource( 3 )
 [node name="LightSources" type="Node" parent="."]
 
 [node name="InteractiveLightSource" parent="LightSources" instance=ExtResource( 3 )]
-position = Vector2( 266.652, -111.241 )
+position = Vector2( 268.771, -116.539 )
 texture = SubResource( 3 )
-texture_scale = 1.36615
-radius = 0.944
+texture_scale = 0.846154
+radius = 0.775
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0, 0, 0, 1 )
