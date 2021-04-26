@@ -1,5 +1,6 @@
 Classe: LightSource
 Extende: Light2D
+Descrição: Classe base para fontes de luz
 Atributos:
 	> float min_radius:
 		Raio mínimo da luz (baseado na medida de texture_scale, da porcentagem da imagem original)
@@ -14,4 +15,23 @@ Atributos:
 	> bool is_enabled:
 		Flag para indicar se a luz está acesa ou não
 Métodos:
-	
+	> float get_radius(int step = null):
+		Caso o parâmetro não seja informado, retorna o raio no nível atual de luz. Caso o parâmetro step seja informado, retorna o raio para esse nível de luz.
+		Obs: O raio de retorno é restringido à faixa de min_radius até max_radius (inclusivo)
+	> void set_radius(float radius):
+		Calcula o nível de luz para que o raio seja o do parâmetro, e altera a variável current_step.
+		Obs: Ajusta o resultado para a faixa de valores de 0 (zero) até light_steps-1
+	> void radius_transition(float initial_radius, float final_radius):
+		Inicia uma transição linear (suavizada) do raio initial_radius até o raio final_radius.
+	> void turn_on():
+		Liga a luz para o nível atual
+	> void turn_off():
+		Desliga a luz
+		
+-------------------------------------------------
+
+Classe: PlayerLightSource
+Extende: LightSource
+Descrição: Luz que acompanha o player. Pode ter seu nível aumentado com a seta para cima e diminuído com a seta para baixo.
+Atributos: Mesmos da classe LightSource
+Métodos: Mesmos da classe LightSource
