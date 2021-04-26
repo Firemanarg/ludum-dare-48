@@ -31,7 +31,7 @@ texture = SubResource( 3 )
 [node name="LightSources" type="Node" parent="."]
 
 [node name="InteractiveLightSource" parent="LightSources" instance=ExtResource( 3 )]
-position = Vector2( 309.538, -123.855 )
+position = Vector2( 266.652, -111.241 )
 texture = SubResource( 3 )
 texture_scale = 1.36615
 radius = 0.944

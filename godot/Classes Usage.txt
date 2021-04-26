@@ -32,6 +32,22 @@ Métodos:
 
 Classe: PlayerLightSource
 Extende: LightSource
-Descrição: Luz que acompanha o player. Pode ter seu nível aumentado com a seta para cima e diminuído com a seta para baixo.
+Descrição: Luz que acompanha o player. Pode ter seu nível aumentado com a seta para cima e diminuído com a seta para baixo. A luz pode ser desligada com a seta esquerda e ligada com a seta direita.
 Atributos: Mesmos da classe LightSource
 Métodos: Mesmos da classe LightSource
+
+-------------------------------------------------
+
+Classe: InteractiveLightSource
+Extende: LightSource
+Descrição: Luz que pode ser ativada ou desativada pelo player. Apaga automaticamente após o tempo (em segundos) definido na variável lifetime.
+Atributos:
+	> float radius:
+		Raio da luz. Pode ser ajustado no editor, e é atualizado em tempo real.
+	> float lifetime:
+		Tempo que a luz permanecerá acesa após ter sido ativada.
+	> void turn_on:
+		Ativa a luz, e inicia o contador de tempo. Ao finalizar, ela será apagada automaticamente.
+		
+-------------------------------------------------
+

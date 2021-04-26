@@ -4,5 +4,7 @@
 [ext_resource path="res://scripts/level/LightSources/InteractiveLightSource.gd" type="Script" id=2]
 
 [node name="InteractiveLightSource" instance=ExtResource( 1 )]
-texture_scale = 0.825
+texture_scale = 1e-05
 script = ExtResource( 2 )
+
+[node name="ConsumeTimer" type="Timer" parent="." index="2"]
