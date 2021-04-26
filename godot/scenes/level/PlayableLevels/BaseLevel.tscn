@@ -7,12 +7,6 @@
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Tilemaps" type="Node" parent="."]
-__meta__ = {
-"_editor_description_": "Os tilemaps vêm aqui. É recomendado usar uma camapa para cada nível de detalhe.
-Ex: Uma para o chão, uma para as paredes, uma para objetos decorativos"
-}
-
 [node name="Objetos" type="YSort" parent="."]
 __meta__ = {
 "_editor_description_": "Os objetos de cena (como árvores, pedras, tochas, etc) devem vir aqui."
