@@ -5,7 +5,6 @@ var path : = PoolVector2Array() setget set_path
 var next_patrol_position : = self.transform.origin
 onready var timer = get_node("Timer")
 export var seek_delay : int = 2
-export var vision_range = 200
 var last_seen = null
 var seek = false
 var position_list: PoolVector2Array
@@ -25,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	move_along_path(move_distance)
 	light_detect()
 	patrol()
-
+	
 	if self.transform.origin == last_seen:
 		if seek == false:
 			print("ainnn entro")
@@ -72,43 +71,15 @@ func _on_Timer_timeout() -> void:
 	go_in_a_place(next_patrol_position)
 	seek = false;
 
-func light_is_on_range(light_source: LightSource):
-	if light_source:
-		var distance = self.transform.origin.distance_to(light_source.transform.origin)
-		return distance < vision_range - light_source.get_radius()
-	pass
-
 func light_detect() -> void:
-	# Check if player is near enemy
-	if Global.player and light_is_on_range(Global.player.light_source):
+	if self.transform.origin.distance_to(Global.player.transform.origin) < 200 && Global._playerLife > 0:
 		speed = 250.0
 		go_in_a_place(Global.player.transform.origin)
 		patrol = false
-
-	# Check if there's any light source near enemy
-	elif Global.light_sources and len(Global.light_sources) > 0:
-		var nearest_light_source = Global.light_sources[0]
-		# Loop through light sources array to get only nearest light source
-		for light_source in Global.light_sources:
-			if light_source.transform.origin < nearest_light_source.transform.origin:
-				nearest_light_source = light_source
-		speed = 250.0
-		go_in_a_place(nearest_light_source.transform.origin)
-		patrol = false
-
-	# No light source visible by enemy
 	elif patrol == false:
 		timer.wait_time = seek_delay
 		timer.start()
 		patrol = true
-#	if self.transform.origin.distance_to(Global.player.transform.origin) < 200 && Global._playerLife > 0:
-#		speed = 250.0
-#		go_in_a_place(Global.player.transform.origin)
-#		patrol = false
-#	elif patrol == false:
-#		timer.wait_time = seek_delay
-#		timer.start()
-#		patrol = true
 
 
 func _on_Area2D_body_entered(body: Node) -> void:
@@ -124,7 +95,7 @@ func patrol() -> void:
 		i = (i + 1) % position_list.size()
 		next_patrol_position = position_list[i]
 		go_in_a_place(next_patrol_position)
-
+		
 
 func animation(axis) -> void:
 	var next_animation
