@@ -1,6 +1,7 @@
 extends Light2D
 class_name LightSource
 
+const IMAGE_ORIGINAL_SIZE = 512
 # To get radius, use function get_radius()
 
 onready var tween = get_node("Tween")
@@ -19,6 +20,10 @@ func _ready() -> void:
 	self.texture_scale = get_radius()
 	pass
 
+func get_radius_converted(step = null) -> float:
+	var result = (get_radius(step) * IMAGE_ORIGINAL_SIZE) * 0.3
+	print("radius = ", get_radius(), " | converted = ", result)
+	return result
 
 func get_radius(step = null) -> float:
 	if not step:
@@ -42,6 +47,7 @@ func turn_on():
 	if not self.visible:
 		self.visible = true
 		radius_transition(0.0, get_radius())
+		is_enabled = true
 
 func turn_off():
 	if self.visible:
@@ -51,3 +57,4 @@ func turn_off():
 
 func on_timer_timeout():
 	self.visible = false
+	is_enabled = false

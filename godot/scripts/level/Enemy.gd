@@ -13,7 +13,7 @@ var i : int = 0
 var last_axis = Vector2(1,0)
 onready var animation = get_node("AnimationPlayer")
 var patrol: bool = false
-var vision_range = 300
+var vision_range = 100
 
 func _ready() -> void:
 	position_list.append(Vector2(-299,400))
@@ -74,42 +74,64 @@ func _on_Timer_timeout() -> void:
 	seek = false;
 
 func is_light_source_on_range(light_source: LightSource):
-	if light_source:
-		var distance = self.transform.origin.distance_to(light_source.transform.origin)
-		return vision_range <= distance - light_source.get_radius()
-	return false
+	var distance = self.transform.origin.distance_to(light_source.transform.origin)
+	var comparison = distance - light_source.get_radius_converted() <= vision_range and light_source.is_enabled
+	#print("Distance: ", distance, " | Comparison: ", comparison)
+	return comparison
+#	return distance < vision_range and light_source.is_enabled
+
+#	if light_source:
+#		var distance = self.transform.origin.distance_to(light_source.transform.origin)
+#		var comparison = distance < vision_range and light_source.is_enabled
+#		if comparison != aux:
+#			print("Comparison ", comparison, " on ", light_source.name, " from ", light_source.get_parent())
+#			aux = comparison
+#		return distance < vision_range and light_source.is_enabled
+##		var distance = self.transform.origin.distance_to(light_source.transform.origin)
+##		return vision_range <= distance - light_source.get_radius()
+#	return false
 
 func light_detect() -> void:
-	# Check if player light source is visible by enemy
-	if Global.player and is_light_source_on_range(Global.player.light_source):
-		print("Target = Player")
+#	if self.transform.origin.distance_to(Global.player.transform.origin) < vision_range && Global._playerLife > 0:
+	if is_light_source_on_range(Global.player.light_source):# and Global._playerLife > 0:
+#	if self.transform.origin.distance_to(Global.player.light_source.transform.origin) < vision_range && Global._playerLife > 0:
 		speed = 250.0
-		go_in_a_place(Global.player.light_source.transform.origin)
+		go_in_a_place(Global.player.light_source.global_transform.origin)
 		patrol = false
-
-	elif Global.light_sources:
-		print("Target = Light Source")
-		speed = 250.0
-
-		var nearest_light_source = null
-		var nearest_distance = null
-
-		# Loop through light sources
-		for light_source in Global.light_sources:
-			if is_light_source_on_range(light_source):
-				var distance = self.transform.origin.distance_to(light_source.transform.origin)
-				if not nearest_light_source or distance < nearest_distance:
-					nearest_light_source = light_source
-					nearest_distance = distance
-
-		if nearest_light_source:
-			go_in_a_place(Global.player.light_source.transform.origin)
-			patrol = false
 	elif patrol == false:
-		print("Target = Patrol")
 		timer.wait_time = seek_delay
 		timer.start()
 		patrol = true
+	# Check if player light source is visible by enemy
+#	if Global.player and is_light_source_on_range(Global.player.light_source):
+#		print("Target = Player")
+#		speed = 250.0
+#		go_in_a_place(Global.player.light_source.transform.origin)
+#		patrol = false
+#
+#	elif Global.light_sources:
+#		print("Target = Light Source ")
+#
+#		var nearest_light_source = null
+#		var nearest_distance = null
+#
+#		# Loop through light sources
+#		for light_source in Global.light_sources:
+#			if is_light_source_on_range(light_source):
+#				var distance = self.transform.origin.distance_to(light_source.transform.origin)
+#				if not nearest_light_source or distance < nearest_distance:
+#					nearest_light_source = light_source
+#					nearest_distance = distance
+#
+#		if nearest_light_source:
+#			speed = 250.0
+#			go_in_a_place(Global.player.light_source.transform.origin)
+#			patrol = false
+#	elif patrol == false:
+#		print("Target = Patrol")
+#		timer.wait_time = seek_delay
+#		timer.start()
+#		patrol = true
 
 #	if self.transform.origin.distance_to(Global.player.transform.origin) < 200 && Global._playerLife > 0:
 #		speed = 250.0

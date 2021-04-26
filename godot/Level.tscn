@@ -77,3 +77,8 @@ position = Vector2( 749.154, -38.956 )
 
 [node name="Control" parent="CanvasLayer" instance=ExtResource( 7 )]
 visible = false
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0, 0, 0, 1 )
+
+[editable path="Player"]
