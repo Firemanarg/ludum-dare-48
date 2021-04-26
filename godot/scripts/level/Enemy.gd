@@ -90,13 +90,15 @@ func light_detect() -> void:
 		speed = 250.0
 
 		var nearest_light_source = null
+		var nearest_distance = null
 
 		# Loop through light sources
 		for light_source in Global.light_sources:
-			if light_source.is_enabled:
+			if is_light_source_on_range(light_source):
 				var distance = self.transform.origin.distance_to(light_source.transform.origin)
-				if distance < light_source.transform.origin or not nearest_light_source:
+				if not nearest_light_source or distance < nearest_distance:
 					nearest_light_source = light_source
+					nearest_distance = distance
 
 		if nearest_light_source:
 			go_in_a_place(Global.player.light_source.transform.origin)
