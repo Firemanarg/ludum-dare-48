@@ -6,12 +6,12 @@ class_name LightSource
 onready var tween = get_node("Tween")
 onready var timer = get_node("Timer")
 
-export var min_radius = 0.5
-export var max_radius = 1.8
-var tween_duration = 0.15
-var current_step = 1
-var light_steps = 5
-export var is_enabled = true
+export var min_radius: float = 0.5
+export var max_radius: float = 1.8
+var tween_duration: float = 0.15
+var current_step: int = 1
+var light_steps: int = 5
+export var is_enabled: bool = true
 
 func _ready() -> void:
 	timer.connect("timeout", self, "on_timer_timeout")
@@ -20,16 +20,19 @@ func _ready() -> void:
 	pass
 
 
-func get_radius(step = null):
+func get_radius(step = null) -> float:
 	if not step:
 		step = current_step
 	return Global.map(step, 0, light_steps-1, min_radius, max_radius)
 
-func set_radius(radius: float):
+func set_radius(radius: float) -> void:
 	var fixed_radius = clamp(radius, min_radius, max_radius)
-	return Global.map(fixed_radius, min_radius, max_radius, 0, light_steps-1)
+	var step = Global.map(fixed_radius, min_radius, max_radius, 0, light_steps-1)
+	step = int( round( clamp(step, 0.0, light_steps-1) ) )
+	radius_transition(get_radius(), get_radius(step))
+	current_step = step
 
-func radius_transition(initial_radius, final_radius):
+func radius_transition(initial_radius: float, final_radius: float):
 	tween.stop_all()
 	tween.interpolate_property(self, "texture_scale", initial_radius, final_radius, tween_duration, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	tween.start()
