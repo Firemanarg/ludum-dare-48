@@ -1,0 +1,17 @@
+Classe: LightSource
+Extende: Light2D
+Atributos:
+	> float min_radius:
+		Raio mínimo da luz (baseado na medida de texture_scale, da porcentagem da imagem original)
+	> float max_radius:
+		Raio máximo da luz (baseado na medida de texture_scale, da porcentagem da imagem original)
+	> float tween_duration:
+		Duração da transição entre níveis de luz
+	> int light_steps:
+		Quantidade de níveis de luz
+	> int current_step:
+		Nível atual de luz
+	> bool is_enabled:
+		Flag para indicar se a luz está acesa ou não
+Métodos:
+	
