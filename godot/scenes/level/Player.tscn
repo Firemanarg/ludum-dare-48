@@ -1,8 +1,8 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/textures/player/Idle/parado.png" type="Texture" id=1]
 [ext_resource path="res://scripts/level/Player.gd" type="Script" id=2]
-[ext_resource path="res://assets/player/animation/idle_foward.tres" type="Animation" id=3]
+[ext_resource path="res://scenes/level/LightSources/PlayerLightSource.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/player/animation/idle_backward.tres" type="Animation" id=4]
 [ext_resource path="res://assets/player/animation/idle_backward_left.tres" type="Animation" id=5]
 [ext_resource path="res://assets/player/animation/idle_backward_right.tres" type="Animation" id=6]
@@ -18,6 +18,7 @@
 [ext_resource path="res://assets/player/animation/walk_foward_left.tres" type="Animation" id=16]
 [ext_resource path="res://assets/player/animation/idle_left.tres" type="Animation" id=17]
 [ext_resource path="res://assets/player/animation/idle_right.tres" type="Animation" id=18]
+[ext_resource path="res://assets/player/animation/idle_foward.tres" type="Animation" id=19]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 16.531
@@ -44,7 +45,7 @@ shape = SubResource( 1 )
 anims/idle_backward = ExtResource( 4 )
 anims/idle_backward_left = ExtResource( 5 )
 anims/idle_backward_right = ExtResource( 6 )
-anims/idle_foward = ExtResource( 3 )
+anims/idle_foward = ExtResource( 19 )
 anims/idle_foward_left = ExtResource( 11 )
 anims/idle_foward_right = ExtResource( 7 )
 anims/idle_left = ExtResource( 17 )
@@ -57,3 +58,5 @@ anims/walk_foward_left = ExtResource( 16 )
 anims/walk_foward_right = ExtResource( 15 )
 anims/walk_left = ExtResource( 10 )
 anims/walk_right = ExtResource( 14 )
+
+[node name="PlayerLightSource" parent="." instance=ExtResource( 3 )]

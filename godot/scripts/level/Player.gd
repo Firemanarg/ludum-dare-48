@@ -1,10 +1,12 @@
 extends KinematicBody2D
+class_name Player
 
 var MAX_SPEED: = 300
 var ACCELERATION: = 2000
 var motion: = Vector2.ZERO
 var last_axis: = Vector2(1,0)
 onready var animation = get_node("AnimationPlayer")
+onready var light_source = get_node("PlayerLightSource")
 
 func _physics_process(delta):
 	var axis = get_input_axis()
@@ -17,7 +19,7 @@ func _physics_process(delta):
 
 func get_input_axis():
 	var axis = Vector2.ZERO
-	
+
 	axis.x = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
 	axis.y = int(Input.is_action_pressed("move_backward")) - int(Input.is_action_pressed("move_forward"))
 	return axis.normalized()
@@ -62,7 +64,7 @@ func animation(axis) -> void:
 	if next_animation != animation.current_animation:
 		animation.play(next_animation)
 #		print(animation.current_animation)
-	
+
 func apply_friction(amount):
 	if motion.length() > amount:
 		motion -= motion.normalized() * amount

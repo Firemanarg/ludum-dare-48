@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name Enemy
 
 var speed : = 250.0
 var path : = PoolVector2Array() setget set_path
@@ -12,6 +13,7 @@ var i : int = 0
 var last_axis = Vector2(1,0)
 onready var animation = get_node("AnimationPlayer")
 var patrol: bool = false
+var vision_range = 200
 
 func _ready() -> void:
 	position_list.append(Vector2(-299,400))
@@ -24,10 +26,10 @@ func _physics_process(delta: float) -> void:
 	move_along_path(move_distance)
 	light_detect()
 	patrol()
-	
+
 	if self.transform.origin == last_seen:
 		if seek == false:
-			print("ainnn entro")
+#			print("ainnn entro")
 			timer.wait_time = seek_delay
 			seek = true
 			timer.start()
@@ -59,7 +61,7 @@ func set_path(value : PoolVector2Array) -> void:
 	set_process(true)
 
 func go_in_a_place(where) -> void:
-	var new_path : = Global.nav_2d.get_simple_path(
+	var new_path = Global.nav_2d.get_simple_path(
 		self.transform.origin,
 		where
 	)
@@ -71,15 +73,46 @@ func _on_Timer_timeout() -> void:
 	go_in_a_place(next_patrol_position)
 	seek = false;
 
+func is_light_source_on_range(light_source: LightSource):
+	if light_source:
+		var distance = self.transform.origin.distance_to(light_source.transform.origin)
+		return vision_range <= distance - light_source.get_radius()
+	return false
+
 func light_detect() -> void:
-	if self.transform.origin.distance_to(Global.player.transform.origin) < 200 && Global._playerLife > 0:
+	# Check if player light source is visible by enemy
+	if Global.player and is_light_source_on_range(Global.player):
 		speed = 250.0
-		go_in_a_place(Global.player.transform.origin)
+		go_in_a_place(Global.player.light_source.transform.origin)
 		patrol = false
+
+	elif Global.light_sources:
+		speed = 250.0
+
+		var nearest_light_source = null
+
+		# Loop through light sources
+		for light_source in Global.light_sources:
+			if light_source.is_enabled:
+				var distance = self.transform.origin.distance_to(light_source.transform.origin)
+				if distance < light_source.transform.origin or not nearest_light_source:
+					nearest_light_source = light_source
+
+		if nearest_light_source:
+			go_in_a_place(Global.player.light_source.transform.origin)
+			patrol = false
 	elif patrol == false:
 		timer.wait_time = seek_delay
 		timer.start()
 		patrol = true
+#	if self.transform.origin.distance_to(Global.player.transform.origin) < 200 && Global._playerLife > 0:
+#		speed = 250.0
+#		go_in_a_place(Global.player.transform.origin)
+#		patrol = false
+#	elif patrol == false:
+#		timer.wait_time = seek_delay
+#		timer.start()
+#		patrol = true
 
 
 func _on_Area2D_body_entered(body: Node) -> void:
@@ -95,7 +128,7 @@ func patrol() -> void:
 		i = (i + 1) % position_list.size()
 		next_patrol_position = position_list[i]
 		go_in_a_place(next_patrol_position)
-		
+
 
 func animation(axis) -> void:
 	var next_animation
