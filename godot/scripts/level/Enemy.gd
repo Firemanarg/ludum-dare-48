@@ -19,6 +19,7 @@ func _ready() -> void:
 	position_list.append(Vector2(-299,400))
 	position_list.append(Vector2(-299,-37))
 	position_list.append(Vector2(-77,199))
+	animation.play("walk_foward")
 
 
 func _physics_process(delta: float) -> void:
@@ -39,7 +40,7 @@ func move_along_path(distance : float) -> void:
 	var last_point : = position
 	for index in range(path.size()):
 		var distance_to_next = last_point.distance_to(path[0])
-		animation(path[0] - last_point) # animation
+#		animation(path[0] - last_point) # animation
 		if distance <= distance_to_next and distance >= 0.0:
 			position = last_point.linear_interpolate(path[0], distance / distance_to_next)
 			break
@@ -158,43 +159,43 @@ func patrol() -> void:
 		go_in_a_place(next_patrol_position)
 
 
-func animation(axis) -> void:
-	var next_animation
-	if axis.x == 0 && axis.y == 0:
-		if last_axis.x == 0 && last_axis.y > 0:
-			next_animation = "enemy_idle_backward"
-		elif last_axis.x == 0 && last_axis.y < 0:
-			next_animation = "enemy_idle_foward"
-		elif last_axis.x > 0 && last_axis.y == 0:
-			next_animation = "enemy_idle_right"
-		elif last_axis.x < 0 && last_axis.y == 0:
-			next_animation = "enemy_idle_left"
-		elif last_axis.x > 0 && last_axis.y > 0:
-			next_animation = "enemy_idle_backward_right"
-		elif last_axis.x < 0 && last_axis.y > 0:
-			next_animation = "enemy_idle_backward_left"
-		elif last_axis.x > 0 && last_axis.y < 0:
-			next_animation = "enemy_idle_foward_right"
-		elif last_axis.x < 0 && last_axis.y < 0:
-			next_animation = "enemy_idle_foward_left"
-	else:
-		if axis.x == 0 && axis.y > 0:
-			next_animation = "enemy_walk_backward"
-		elif axis.x == 0 && axis.y < 0:
-			next_animation = "enemywalk_foward"
-		elif axis.x > 0 && axis.y == 0:
-			next_animation = "enmy_walk_right"
-		elif axis.x < 0 && axis.y == 0:
-			next_animation = "enemy_walk_left"
-		elif axis.x > 0 && axis.y > 0:
-			next_animation = "enemy_walk_backward_right"
-		elif axis.x < 0 && axis.y > 0:
-			next_animation = "enemy_walk_backward_left"
-		elif axis.x > 0 && axis.y < 0:
-			next_animation = "enemy_walk_foward_right"
-		elif axis.x < 0 && axis.y < 0:
-			next_animation = "enemy_walk_foward_left"
-	last_axis = axis
+#func animation(axis) -> void:
+#	var next_animation
+#	if axis.x == 0 && axis.y == 0:
+#		if last_axis.x == 0 && last_axis.y > 0:
+#			next_animation = "enemy_idle_backward"
+#		elif last_axis.x == 0 && last_axis.y < 0:
+#			next_animation = "enemy_idle_foward"
+#		elif last_axis.x > 0 && last_axis.y == 0:
+#			next_animation = "enemy_idle_right"
+#		elif last_axis.x < 0 && last_axis.y == 0:
+#			next_animation = "enemy_idle_left"
+#		elif last_axis.x > 0 && last_axis.y > 0:
+#			next_animation = "enemy_idle_backward_right"
+#		elif last_axis.x < 0 && last_axis.y > 0:
+#			next_animation = "enemy_idle_backward_left"
+#		elif last_axis.x > 0 && last_axis.y < 0:
+#			next_animation = "enemy_idle_foward_right"
+#		elif last_axis.x < 0 && last_axis.y < 0:
+#			next_animation = "enemy_idle_foward_left"
+#	else:
+#		if axis.x == 0 && axis.y > 0:
+#			next_animation = "enemy_walk_backward"
+#		elif axis.x == 0 && axis.y < 0:
+#			next_animation = "enemywalk_foward"
+#		elif axis.x > 0 && axis.y == 0:
+#			next_animation = "enmy_walk_right"
+#		elif axis.x < 0 && axis.y == 0:
+#			next_animation = "enemy_walk_left"
+#		elif axis.x > 0 && axis.y > 0:
+#			next_animation = "enemy_walk_backward_right"
+#		elif axis.x < 0 && axis.y > 0:
+#			next_animation = "enemy_walk_backward_left"
+#		elif axis.x > 0 && axis.y < 0:
+#			next_animation = "enemy_walk_foward_right"
+#		elif axis.x < 0 && axis.y < 0:
+#			next_animation = "enemy_walk_foward_left"
+#	last_axis = axis
 #	if next_animation != animation.current_animation:
 #		animation.play(next_animation)
 #		print(animation.current_animation)
