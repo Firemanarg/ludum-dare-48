@@ -1,28 +1,124 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=30 format=2]
 
-[ext_resource path="res://assets/textures/player/Idle/parado.png" type="Texture" id=1]
+[ext_resource path="res://assets/texturas_interativas/axel/diagonal/parado_diag.png" type="Texture" id=1]
 [ext_resource path="res://scripts/level/Player.gd" type="Script" id=2]
 [ext_resource path="res://scenes/level/LightSources/PlayerLightSource.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/player/animation/idle_backward.tres" type="Animation" id=4]
 [ext_resource path="res://assets/player/animation/idle_backward_left.tres" type="Animation" id=5]
 [ext_resource path="res://assets/player/animation/idle_backward_right.tres" type="Animation" id=6]
 [ext_resource path="res://assets/player/animation/idle_foward_right.tres" type="Animation" id=7]
-[ext_resource path="res://assets/player/animation/walk_backward_right.tres" type="Animation" id=8]
+[ext_resource path="res://assets/texturas_interativas/axel/diagonal/1_diag.png" type="Texture" id=8]
 [ext_resource path="res://assets/player/animation/walk_backward_left.tres" type="Animation" id=9]
 [ext_resource path="res://assets/player/animation/walk_left.tres" type="Animation" id=10]
 [ext_resource path="res://assets/player/animation/idle_foward_left.tres" type="Animation" id=11]
 [ext_resource path="res://assets/player/animation/walk_backward.tres" type="Animation" id=12]
 [ext_resource path="res://assets/player/animation/walk_foward.tres" type="Animation" id=13]
-[ext_resource path="res://assets/player/animation/walk_right.tres" type="Animation" id=14]
-[ext_resource path="res://assets/player/animation/walk_foward_right.tres" type="Animation" id=15]
+[ext_resource path="res://assets/texturas_interativas/axel/perfil/parado_perfil.png" type="Texture" id=14]
+[ext_resource path="res://assets/texturas_interativas/axel/diagonal tras/diag_tras_1.png" type="Texture" id=15]
 [ext_resource path="res://assets/player/animation/walk_foward_left.tres" type="Animation" id=16]
 [ext_resource path="res://assets/player/animation/idle_left.tres" type="Animation" id=17]
 [ext_resource path="res://assets/player/animation/idle_right.tres" type="Animation" id=18]
 [ext_resource path="res://assets/player/animation/idle_foward.tres" type="Animation" id=19]
+[ext_resource path="res://assets/texturas_interativas/axel/diagonal/2_diag.png" type="Texture" id=20]
+[ext_resource path="res://assets/texturas_interativas/axel/diagonal tras/diag_tras_2.png" type="Texture" id=21]
+[ext_resource path="res://assets/texturas_interativas/axel/diagonal tras/diag_tras_parado.png" type="Texture" id=22]
+[ext_resource path="res://assets/texturas_interativas/axel/perfil/1_perfil.png" type="Texture" id=23]
+[ext_resource path="res://assets/texturas_interativas/axel/perfil/2_perfil.png" type="Texture" id=24]
+[ext_resource path="res://assets/texturas_interativas/axel/tras/costas_parado.png" type="Texture" id=25]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 16.531
 height = 0.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "walk_backward_right"
+length = 0.6
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("player:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ), ExtResource( 8 ), ExtResource( 1 ), ExtResource( 20 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("player:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.15, 0.15 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "walk_foward_right"
+length = 0.6
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("player:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 22 ), ExtResource( 15 ), ExtResource( 22 ), ExtResource( 21 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("player:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.15, 0.15 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "walk_right"
+length = 0.6
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("player:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 14 ), ExtResource( 23 ), ExtResource( 14 ), ExtResource( 24 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("player:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.15, 0.15 ) ]
+}
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -35,9 +131,10 @@ smoothing_speed = 3.0
 [node name="player" type="Sprite" parent="."]
 position = Vector2( 0.209103, -44.7362 )
 scale = Vector2( 0.15, 0.15 )
-texture = ExtResource( 1 )
+texture = ExtResource( 25 )
 
 [node name="collider" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0.466736, -16.2935 )
 shape = SubResource( 1 )
 
@@ -52,11 +149,11 @@ anims/idle_left = ExtResource( 17 )
 anims/idle_right = ExtResource( 18 )
 anims/walk_backward = ExtResource( 12 )
 anims/walk_backward_left = ExtResource( 9 )
-anims/walk_backward_right = ExtResource( 8 )
+anims/walk_backward_right = SubResource( 2 )
 anims/walk_foward = ExtResource( 13 )
 anims/walk_foward_left = ExtResource( 16 )
-anims/walk_foward_right = ExtResource( 15 )
+anims/walk_foward_right = SubResource( 3 )
 anims/walk_left = ExtResource( 10 )
-anims/walk_right = ExtResource( 14 )
+anims/walk_right = SubResource( 4 )
 
 [node name="PlayerLightSource" parent="." instance=ExtResource( 3 )]
