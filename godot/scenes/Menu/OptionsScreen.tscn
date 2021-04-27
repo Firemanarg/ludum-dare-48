@@ -1,0 +1,102 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/Menu/BackButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Menu/Option.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Menu/FadeIn.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Fonts/InkFree_53.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/menu/BOTAP.png" type="Texture" id=5]
+[ext_resource path="res://assets/menu/Fundo.png" type="Texture" id=6]
+[ext_resource path="res://assets/menu/Titulo.png" type="Texture" id=7]
+[ext_resource path="res://assets/menu/Botao.png" type="Texture" id=8]
+
+[node name="OptionsScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_rotation = -0.206111
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_right = -50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logo" type="TextureRect" parent="Menu"]
+margin_right = 924.0
+margin_bottom = 259.0
+texture = ExtResource( 7 )
+stretch_mode = 4
+
+[node name="CenterRow" type="HBoxContainer" parent="Menu"]
+margin_top = 263.0
+margin_right = 924.0
+margin_bottom = 600.0
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
+margin_right = 924.0
+margin_bottom = 337.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 24
+
+[node name="Label" type="Label" parent="Menu/CenterRow/Buttons"]
+margin_right = 924.0
+margin_bottom = 67.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.356863, 0.356863, 0.384314, 1 )
+text = "Volume"
+align = 1
+valign = 1
+
+[node name="HSlider" type="HSlider" parent="Menu/CenterRow/Buttons"]
+margin_top = 91.0
+margin_right = 924.0
+margin_bottom = 141.0
+custom_icons/tick = ExtResource( 5 )
+custom_icons/grabber_disabled = ExtResource( 5 )
+custom_icons/grabber_highlight = ExtResource( 5 )
+custom_icons/grabber = ExtResource( 5 )
+max_value = 10.0
+value = 10.0
+
+[node name="TextureRect4" type="TextureRect" parent="Menu/CenterRow/Buttons"]
+margin_top = 165.0
+margin_right = 924.0
+margin_bottom = 225.0
+rect_min_size = Vector2( 0, 60 )
+texture = ExtResource( 8 )
+stretch_mode = 4
+
+[node name="BackButton" parent="Menu/CenterRow/Buttons/TextureRect4" instance=ExtResource( 1 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 0.0
+margin_bottom = 0.0
+rect_min_size = Vector2( 360, 60 )
+rect_rotation = 0.0
+
+[node name="FadeIn" parent="." instance=ExtResource( 3 )]
+margin_left = -7.06874
+margin_top = 0.679288
+margin_right = -7.06873
+margin_bottom = 0.67926
+mouse_filter = 2
+
+[connection signal="value_changed" from="Menu/CenterRow/Buttons/HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="pressed" from="Menu/CenterRow/Buttons/TextureRect4/BackButton" to="." method="_on_BackButton_pressed"]
