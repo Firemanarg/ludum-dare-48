@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Trap Door opening.wav-f5b210accb0a25053c2bf7f8a9396d59.sample"
+
+[deps]
+
+source_file="res://assets/audio/Trapdoor/Opening/Trap Door opening.wav"
+dest_files=[ "res://.import/Trap Door opening.wav-f5b210accb0a25053c2bf7f8a9396d59.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
