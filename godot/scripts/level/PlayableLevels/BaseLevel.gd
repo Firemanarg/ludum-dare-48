@@ -10,7 +10,7 @@ func _ready() -> void:
 	Global.current_level = self
 	update_global_light_sources()
 	update_global_enemies()
-	Global.nav_2d = get_node("Navigation2D")
+	Global.nav_2d = get_node("Tilemaps")
 	Global.Enemy = get_node("Enemy")
 	Global._playerLife = 1
 #	Global.light_sources.append(get_node("InteractiveLightSource"))

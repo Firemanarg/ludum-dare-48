@@ -68,6 +68,7 @@ valign = 1
 margin_top = 91.0
 margin_right = 924.0
 margin_bottom = 141.0
+mouse_default_cursor_shape = 2
 custom_icons/tick = ExtResource( 5 )
 custom_icons/grabber_disabled = ExtResource( 5 )
 custom_icons/grabber_highlight = ExtResource( 5 )
@@ -90,6 +91,7 @@ margin_right = 0.0
 margin_bottom = 0.0
 rect_min_size = Vector2( 360, 60 )
 rect_rotation = 0.0
+mouse_default_cursor_shape = 2
 
 [node name="FadeIn" parent="." instance=ExtResource( 3 )]
 margin_left = -7.06874

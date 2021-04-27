@@ -69,6 +69,7 @@ margin_right = 0.0
 margin_bottom = 0.0
 rect_min_size = Vector2( 360, 60 )
 rect_rotation = 0.0
+mouse_default_cursor_shape = 2
 script = ExtResource( 8 )
 
 [node name="TextureRect2" type="TextureRect" parent="Menu/CenterRow/Buttons"]
@@ -82,6 +83,7 @@ stretch_mode = 4
 [node name="OptionsButton" parent="Menu/CenterRow/Buttons/TextureRect2" instance=ExtResource( 7 )]
 rect_min_size = Vector2( 360, 60 )
 rect_rotation = 0.0
+mouse_default_cursor_shape = 2
 script = ExtResource( 8 )
 scene_to_load = "res://scenes/Menu/OptionsScreen.tscn"
 
@@ -98,6 +100,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 0.0
 margin_bottom = 0.0
+mouse_default_cursor_shape = 2
 
 [node name="FadeIn" parent="." instance=ExtResource( 6 )]
 margin_left = -1.88774

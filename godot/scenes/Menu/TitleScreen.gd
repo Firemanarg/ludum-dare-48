@@ -7,7 +7,7 @@ func _on_Button_pressed(scene_to_load):
 	get_tree().change_scene(scene_to_load)
 
 func _on_PlayButton_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene("res://scenes/level/PlayableLevels/TestLevel.tscn")
 
 func _on_OptionsButton_pressed() -> void:
 	get_tree().change_scene("res://scenes/Menu/OptionsScreen.tscn")

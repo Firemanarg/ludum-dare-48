@@ -8,7 +8,7 @@ onready var timer = get_node("Timer")
 export var seek_delay : int = 2
 var last_seen = null
 var seek = false
-var position_list: PoolVector2Array
+export var position_list: PoolVector2Array
 var i : int = 0
 var last_axis = Vector2(1,0)
 onready var animation = get_node("AnimationPlayer")
@@ -16,9 +16,6 @@ var patrol: bool = false
 var vision_range = 100
 
 func _ready() -> void:
-	position_list.append(Vector2(-299,400))
-	position_list.append(Vector2(-299,-37))
-	position_list.append(Vector2(-77,199))
 	animation.play("walk_foward")
 
 
