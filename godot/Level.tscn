@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/level/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/level/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/level/Level.gd" type="Script" id=3]
 [ext_resource path="res://assets/textures/TileSets/Grasslands.png" type="Texture" id=4]
 [ext_resource path="res://scenes/level/Interactive_Etscn.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/level/LevelObjects/Objects/TerraCoveiro.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/level/Main.tscn" type="PackedScene" id=7]
 
 [sub_resource type="NavigationPolygon" id=1]
@@ -68,6 +67,9 @@ tile_data = PoolIntArray( -65541, 0, 0, -65540, 0, 0, -65539, 0, 0, -65538, 0, 0
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 188.574, 171.737 )
 
+[node name="PlayerLightSource" parent="Player" index="4"]
+shadow_enabled = false
+
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
 position = Vector2( -87, 39 )
 
@@ -82,7 +84,5 @@ visible = false
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color( 0, 0, 0, 1 )
-
-[node name="TerraCoveiro" parent="." instance=ExtResource( 6 )]
 
 [editable path="Player"]
