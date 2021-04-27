@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Torch being turned on.wav-1430225d3c7088bfc2b86b8dbb9a87c9.sample"
+
+[deps]
+
+source_file="res://assets/audio/Torch/Lighting the Torch/Torch being turned on.wav"
+dest_files=[ "res://.import/Torch being turned on.wav-1430225d3c7088bfc2b86b8dbb9a87c9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

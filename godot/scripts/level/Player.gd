@@ -28,9 +28,9 @@ func animation(axis) -> void:
 	var next_animation
 	if axis.x == 0 && axis.y == 0:
 		if last_axis.x == 0 && last_axis.y > 0:
-			next_animation = "idle_backward"
-		elif last_axis.x == 0 && last_axis.y < 0:
 			next_animation = "idle_foward"
+		elif last_axis.x == 0 && last_axis.y < 0:
+			next_animation = "idle_backward"
 		elif last_axis.x > 0 && last_axis.y == 0:
 			next_animation = "idle_right"
 		elif last_axis.x < 0 && last_axis.y == 0:

@@ -1,16 +1,8 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=24 format=2]
 
-[ext_resource path="res://assets/Characters/Robi.png" type="Texture" id=1]
+[ext_resource path="res://assets/texturas_interativas/monstros/frente/frente.png" type="Texture" id=1]
 [ext_resource path="res://assets/Characters/Shadow.png" type="Texture" id=2]
 [ext_resource path="res://scripts/level/Enemy.gd" type="Script" id=3]
-[ext_resource path="res://assets/enemy/animation/enemy_idle_backward_left.tres" type="Animation" id=4]
-[ext_resource path="res://assets/enemy/animation/enemy_idle_backward_right.tres" type="Animation" id=5]
-[ext_resource path="res://assets/enemy/animation/enemy_idle_backward.tres" type="Animation" id=6]
-[ext_resource path="res://assets/enemy/animation/enemy_idle_foward.tres" type="Animation" id=7]
-[ext_resource path="res://assets/enemy/animation/enemy_idle_foward_right.tres" type="Animation" id=8]
-[ext_resource path="res://assets/enemy/animation/enemy_idle_foward_left.tres" type="Animation" id=9]
-[ext_resource path="res://assets/enemy/animation/enemy_idle_left.tres" type="Animation" id=10]
-[ext_resource path="res://assets/enemy/animation/enemy_idle_right.tres" type="Animation" id=11]
 [ext_resource path="res://assets/enemy/animation/enemy_idle_foward.tres" type="Animation" id=12]
 [ext_resource path="res://assets/enemy/animation/enemy_idle_backward_left.tres" type="Animation" id=13]
 [ext_resource path="res://assets/enemy/animation/enemy_idle_backward.tres" type="Animation" id=14]
@@ -19,7 +11,6 @@
 [ext_resource path="res://assets/enemy/animation/enemy_idle_left.tres" type="Animation" id=17]
 [ext_resource path="res://assets/enemy/animation/enemy_idle_foward_right.tres" type="Animation" id=18]
 [ext_resource path="res://assets/enemy/animation/enemy_idle_right.tres" type="Animation" id=19]
-
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 12.5631
@@ -96,14 +87,14 @@ anims/enemy_idle_foward_left = ExtResource( 16 )
 anims/enemy_idle_foward_right = ExtResource( 18 )
 anims/enemy_idle_left = ExtResource( 17 )
 anims/enemy_idle_right = ExtResource( 19 )
-anims/idle_backward = ExtResource( 6 )
-anims/idle_backward_left = ExtResource( 4 )
-anims/idle_backward_right = ExtResource( 5 )
-anims/idle_foward = ExtResource( 7 )
-anims/idle_foward_left = ExtResource( 9 )
-anims/idle_foward_right = ExtResource( 8 )
-anims/idle_left = ExtResource( 10 )
-anims/idle_right = ExtResource( 11 )
+anims/idle_backward = ExtResource( 14 )
+anims/idle_backward_left = ExtResource( 13 )
+anims/idle_backward_right = ExtResource( 15 )
+anims/idle_foward = ExtResource( 12 )
+anims/idle_foward_left = ExtResource( 16 )
+anims/idle_foward_right = ExtResource( 18 )
+anims/idle_left = ExtResource( 17 )
+anims/idle_right = ExtResource( 19 )
 anims/walk_backward = SubResource( 5 )
 anims/walk_backward_left = SubResource( 6 )
 anims/walk_backward_right = SubResource( 7 )
