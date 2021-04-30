@@ -6,6 +6,7 @@ const IMAGE_ORIGINAL_SIZE = 512
 
 onready var tween = get_node("Tween")
 onready var timer = get_node("Timer")
+onready var radius_line = get_node("RadiusLine")
 
 export var min_radius: float = 0.5
 export var max_radius: float = 1.8
@@ -14,11 +15,16 @@ var current_step: int = 1
 var light_steps: int = 5
 export var is_enabled: bool = true
 
+const radius_line_speed = 200
+
 func _ready() -> void:
 	timer.connect("timeout", self, "on_timer_timeout")
 	tween.connect("tween_completed", self, "on_tween_completed")
 	self.texture_scale = get_radius()
 	pass
+
+func _process(delta: float) -> void:
+	radius_line.rotation_degrees += delta * radius_line_speed
 
 func get_radius_converted(step = null) -> float:
 	var result = (get_radius(step) * IMAGE_ORIGINAL_SIZE) * 0.3
@@ -30,6 +36,9 @@ func get_radius(step = null) -> float:
 		step = current_step
 	return Global.map(step, 0, light_steps-1, min_radius, max_radius)
 
+func update_radius_line():
+	radius_line.set_point_position(1, Vector2(get_radius_converted(), 0))
+
 func set_radius(radius: float) -> void:
 	var fixed_radius = clamp(radius, min_radius, max_radius)
 	var step = Global.map(fixed_radius, min_radius, max_radius, 0, light_steps-1)
@@ -38,6 +47,7 @@ func set_radius(radius: float) -> void:
 	current_step = step
 
 func radius_transition(initial_radius: float, final_radius: float):
+	update_radius_line()
 	tween.stop_all()
 	tween.interpolate_property(self, "texture_scale", initial_radius, final_radius, tween_duration, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	tween.start()
