@@ -1,6 +1,6 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=33 format=2]
 
-[ext_resource path="res://assets/textures/player/idle/backward_right/idle_backward_right_01.png" type="Texture" id=1]
+[ext_resource path="res://assets/textures/player/walking/forward_right/walking_forward_right_03.png" type="Texture" id=1]
 [ext_resource path="res://scripts/level/Player.gd" type="Script" id=2]
 [ext_resource path="res://scenes/level/LightSources/PlayerLightSource.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/animations/player/idle_backward.tres" type="Animation" id=4]
@@ -13,11 +13,21 @@
 [ext_resource path="res://assets/animations/player/idle_foward_left.tres" type="Animation" id=11]
 [ext_resource path="res://assets/animations/player/walk_backward.tres" type="Animation" id=12]
 [ext_resource path="res://assets/animations/player/walk_foward.tres" type="Animation" id=13]
+[ext_resource path="res://assets/textures/player/walking/backward_right/walking_backward_right_04.png" type="Texture" id=14]
+[ext_resource path="res://assets/textures/player/walking/backward_right/walking_backward_right_03.png" type="Texture" id=15]
 [ext_resource path="res://assets/animations/player/walk_foward_left.tres" type="Animation" id=16]
 [ext_resource path="res://assets/animations/player/idle_left.tres" type="Animation" id=17]
 [ext_resource path="res://assets/animations/player/idle_right.tres" type="Animation" id=18]
 [ext_resource path="res://assets/animations/player/idle_foward.tres" type="Animation" id=19]
-[ext_resource path="res://assets/textures/player/idle/right/idle_right_01.png" type="Texture" id=25]
+[ext_resource path="res://assets/textures/player/walking/backward_right/walking_backward_right_02.png" type="Texture" id=20]
+[ext_resource path="res://assets/textures/player/walking/forward_right/walking_forward_right_04.png" type="Texture" id=21]
+[ext_resource path="res://assets/textures/player/walking/forward_right/walking_forward_right_02.png" type="Texture" id=22]
+[ext_resource path="res://assets/textures/player/walking/forward_right/walking_forward_right_01.png" type="Texture" id=23]
+[ext_resource path="res://assets/textures/player/walking/right/walking_right_04.png" type="Texture" id=24]
+[ext_resource path="res://assets/textures/player/walking/left/walking_left_01.png" type="Texture" id=25]
+[ext_resource path="res://assets/textures/player/walking/right/walking_right_01.png" type="Texture" id=26]
+[ext_resource path="res://assets/textures/player/walking/right/walking_right_02.png" type="Texture" id=27]
+[ext_resource path="res://assets/textures/player/walking/right/walking_right_03.png" type="Texture" id=28]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 16.531
@@ -38,10 +48,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 1 ), ExtResource( 8 ), ExtResource( 1 ), ExtResource( 25 ) ]
+"values": [ ExtResource( 8 ), ExtResource( 20 ), ExtResource( 15 ), ExtResource( 14 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("player:scale")
+tracks/1/path = NodePath("player:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -50,7 +60,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.15, 0.15 ) ]
+"values": [ Vector2( -1.8, -48 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -68,10 +78,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 25 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 25 ) ]
+"values": [ ExtResource( 23 ), ExtResource( 22 ), ExtResource( 1 ), ExtResource( 21 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("player:scale")
+tracks/1/path = NodePath("player:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -80,7 +90,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.15, 0.15 ) ]
+"values": [ Vector2( 4, -42 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -98,10 +108,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 25 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 25 ) ]
+"values": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 24 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("player:scale")
+tracks/1/path = NodePath("player:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -110,7 +120,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.15, 0.15 ) ]
+"values": [ Vector2( -5, -41.5 ) ]
 }
 
 [node name="Player" type="KinematicBody2D"]
@@ -122,9 +132,9 @@ smoothing_enabled = true
 smoothing_speed = 3.0
 
 [node name="player" type="Sprite" parent="."]
-position = Vector2( 6.2, -48 )
-scale = Vector2( -0.15, 0.15 )
-texture = ExtResource( 1 )
+position = Vector2( -5, -41.5 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 25 )
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2( 0.466736, -16.2935 )

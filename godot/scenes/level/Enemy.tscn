@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scripts/level/Enemy.gd" type="Script" id=3]
 [ext_resource path="res://assets/textures/enemy/idle_walking/backward/backward_01.png" type="Texture" id=5]
@@ -12,29 +12,25 @@
 [ext_resource path="res://assets/animations/enemy/enemy_idle_right.tres" type="Animation" id=19]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 12.5631
-height = 2.4972
+radius = 22.0481
+height = 8.69144
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 17.6844
-height = 4.33257
-
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "Idle_backward"
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "Idle_foward"
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "walk_backward"
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "walk_backward_left"
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "walk_backward_right"
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 resource_name = "walk_foward"
 length = 0.3
 loop = true
@@ -63,15 +59,15 @@ tracks/1/keys = {
 "values": [ Vector2( 0.231672, 0.231672 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 resource_name = "walk_foward_left"
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 resource_name = "walk_foward_right"
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=10]
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 
 [node name="Enemy" type="KinematicBody2D"]
 collision_layer = 2
@@ -86,20 +82,12 @@ texture = ExtResource( 5 )
 one_shot = true
 
 [node name="collider" type="CollisionShape2D" parent="."]
-position = Vector2( 0.115601, -13.9171 )
+position = Vector2( 0.116, -25 )
 shape = SubResource( 1 )
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-light_mask = 2
-position = Vector2( -0.333694, -18.6878 )
-shape = SubResource( 2 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Idle_backward = SubResource( 3 )
-anims/Idle_foward = SubResource( 4 )
+anims/Idle_backward = SubResource( 2 )
+anims/Idle_foward = SubResource( 3 )
 anims/enemy_idle_backward = ExtResource( 14 )
 anims/enemy_idle_backward_left = ExtResource( 13 )
 anims/enemy_idle_backward_right = ExtResource( 15 )
@@ -116,14 +104,13 @@ anims/idle_foward_left = ExtResource( 16 )
 anims/idle_foward_right = ExtResource( 18 )
 anims/idle_left = ExtResource( 17 )
 anims/idle_right = ExtResource( 19 )
-anims/walk_backward = SubResource( 5 )
-anims/walk_backward_left = SubResource( 6 )
-anims/walk_backward_right = SubResource( 7 )
-anims/walk_foward = SubResource( 8 )
-anims/walk_foward_left = SubResource( 9 )
-anims/walk_foward_right = SubResource( 10 )
-anims/walk_left = SubResource( 11 )
-anims/walk_right = SubResource( 12 )
+anims/walk_backward = SubResource( 4 )
+anims/walk_backward_left = SubResource( 5 )
+anims/walk_backward_right = SubResource( 6 )
+anims/walk_foward = SubResource( 7 )
+anims/walk_foward_left = SubResource( 8 )
+anims/walk_foward_right = SubResource( 9 )
+anims/walk_left = SubResource( 10 )
+anims/walk_right = SubResource( 11 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
