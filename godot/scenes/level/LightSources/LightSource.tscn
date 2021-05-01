@@ -16,6 +16,3 @@ script = ExtResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
-
-[node name="RadiusLine" type="Line2D" parent="."]
-points = PoolVector2Array( 0, 0, 60, 0 )
