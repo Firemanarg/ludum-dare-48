@@ -8,7 +8,7 @@ onready var timer = get_node("Timer")
 export var seek_delay : int = 2
 var last_seen = null
 var seek = false
-export var position_list: PoolVector2Array
+var position_list: PoolVector2Array
 var i : int = 0
 var last_axis = Vector2(1,0)
 onready var animation = get_node("AnimationPlayer")
@@ -16,7 +16,9 @@ var patrol: bool = false
 var vision_range = 100
 
 func _ready() -> void:
-	animation.play("walk_foward")
+	position_list.append(Vector2(-299,400))
+	position_list.append(Vector2(-299,-37))
+	position_list.append(Vector2(-77,199))
 
 
 func _physics_process(delta: float) -> void:
@@ -37,7 +39,7 @@ func move_along_path(distance : float) -> void:
 	var last_point : = position
 	for index in range(path.size()):
 		var distance_to_next = last_point.distance_to(path[0])
-#		animation(path[0] - last_point) # animation
+		animation(path[0] - last_point) # animation
 		if distance <= distance_to_next and distance >= 0.0:
 			position = last_point.linear_interpolate(path[0], distance / distance_to_next)
 			break
@@ -72,74 +74,34 @@ func _on_Timer_timeout() -> void:
 	seek = false;
 
 func is_light_source_on_range(light_source: LightSource):
-	var distance = self.transform.origin.distance_to(light_source.transform.origin)
-	var comparison = distance - light_source.get_radius_converted() <= vision_range and light_source.is_enabled
+	var distance = self.transform.origin.distance_to(Global.player.transform.origin)
+
+	vision_range = light_source.get_radius_converted()
+#	match light_source.current_step:
+#		0:
+#			vision_range = 100
+#		1:
+#			vision_range = 126
+#		2:
+#			vision_range = 176
+#		3:
+#			vision_range = 226
+#		4:
+#			vision_range = 276
+
+	var comparison = distance <= vision_range and light_source.is_enabled
 	#print("Distance: ", distance, " | Comparison: ", comparison)
 	return comparison
-#	return distance < vision_range and light_source.is_enabled
-
-#	if light_source:
-#		var distance = self.transform.origin.distance_to(light_source.transform.origin)
-#		var comparison = distance < vision_range and light_source.is_enabled
-#		if comparison != aux:
-#			print("Comparison ", comparison, " on ", light_source.name, " from ", light_source.get_parent())
-#			aux = comparison
-#		return distance < vision_range and light_source.is_enabled
-##		var distance = self.transform.origin.distance_to(light_source.transform.origin)
-##		return vision_range <= distance - light_source.get_radius()
-#	return false
 
 func light_detect() -> void:
-#	if self.transform.origin.distance_to(Global.player.transform.origin) < vision_range && Global._playerLife > 0:
-	if is_light_source_on_range(Global.player.light_source):# and Global._playerLife > 0:
-#	if self.transform.origin.distance_to(Global.player.light_source.transform.origin) < vision_range && Global._playerLife > 0:
+	if is_light_source_on_range(Global.player.light_source): #&& Global._playerLife > 0:
 		speed = 250.0
-		go_in_a_place(Global.player.light_source.global_transform.origin)
+		go_in_a_place(Global.player.transform.origin)
 		patrol = false
 	elif patrol == false:
 		timer.wait_time = seek_delay
 		timer.start()
 		patrol = true
-	# Check if player light source is visible by enemy
-#	if Global.player and is_light_source_on_range(Global.player.light_source):
-#		print("Target = Player")
-#		speed = 250.0
-#		go_in_a_place(Global.player.light_source.transform.origin)
-#		patrol = false
-#
-#	elif Global.light_sources:
-#		print("Target = Light Source ")
-#
-#		var nearest_light_source = null
-#		var nearest_distance = null
-#
-#		# Loop through light sources
-#		for light_source in Global.light_sources:
-#			if is_light_source_on_range(light_source):
-#				var distance = self.transform.origin.distance_to(light_source.transform.origin)
-#				if not nearest_light_source or distance < nearest_distance:
-#					nearest_light_source = light_source
-#					nearest_distance = distance
-#
-#		if nearest_light_source:
-#			speed = 250.0
-#			go_in_a_place(Global.player.light_source.transform.origin)
-#			patrol = false
-#	elif patrol == false:
-#		print("Target = Patrol")
-#		timer.wait_time = seek_delay
-#		timer.start()
-#		patrol = true
-
-#	if self.transform.origin.distance_to(Global.player.transform.origin) < 200 && Global._playerLife > 0:
-#		speed = 250.0
-#		go_in_a_place(Global.player.transform.origin)
-#		patrol = false
-#	elif patrol == false:
-#		timer.wait_time = seek_delay
-#		timer.start()
-#		patrol = true
-
 
 func _on_Area2D_body_entered(body: Node) -> void:
 	print("asdyhvasdguaysdb     " + body.name)
@@ -156,44 +118,43 @@ func patrol() -> void:
 		go_in_a_place(next_patrol_position)
 
 
-#func animation(axis) -> void:
-#	var next_animation
-#	if axis.x == 0 && axis.y == 0:
-#		if last_axis.x == 0 && last_axis.y > 0:
-#			next_animation = "enemy_idle_backward"
-#		elif last_axis.x == 0 && last_axis.y < 0:
-#			next_animation = "enemy_idle_foward"
-#		elif last_axis.x > 0 && last_axis.y == 0:
-#			next_animation = "enemy_idle_right"
-#		elif last_axis.x < 0 && last_axis.y == 0:
-#			next_animation = "enemy_idle_left"
-#		elif last_axis.x > 0 && last_axis.y > 0:
-#			next_animation = "enemy_idle_backward_right"
-#		elif last_axis.x < 0 && last_axis.y > 0:
-#			next_animation = "enemy_idle_backward_left"
-#		elif last_axis.x > 0 && last_axis.y < 0:
-#			next_animation = "enemy_idle_foward_right"
-#		elif last_axis.x < 0 && last_axis.y < 0:
-#			next_animation = "enemy_idle_foward_left"
-#	else:
-#		if axis.x == 0 && axis.y > 0:
-#			next_animation = "enemy_walk_backward"
-#		elif axis.x == 0 && axis.y < 0:
-#			next_animation = "enemywalk_foward"
-#		elif axis.x > 0 && axis.y == 0:
-#			next_animation = "enmy_walk_right"
-#		elif axis.x < 0 && axis.y == 0:
-#			next_animation = "enemy_walk_left"
-#		elif axis.x > 0 && axis.y > 0:
-#			next_animation = "enemy_walk_backward_right"
-#		elif axis.x < 0 && axis.y > 0:
-#			next_animation = "enemy_walk_backward_left"
-#		elif axis.x > 0 && axis.y < 0:
-#			next_animation = "enemy_walk_foward_right"
-#		elif axis.x < 0 && axis.y < 0:
-#			next_animation = "enemy_walk_foward_left"
-#	last_axis = axis
+func animation(axis) -> void:
+	var next_animation
+	if axis.x == 0 && axis.y == 0:
+		if last_axis.x == 0 && last_axis.y > 0:
+			next_animation = "enemy_idle_backward"
+		elif last_axis.x == 0 && last_axis.y < 0:
+			next_animation = "enemy_idle_foward"
+		elif last_axis.x > 0 && last_axis.y == 0:
+			next_animation = "enemy_idle_right"
+		elif last_axis.x < 0 && last_axis.y == 0:
+			next_animation = "enemy_idle_left"
+		elif last_axis.x > 0 && last_axis.y > 0:
+			next_animation = "enemy_idle_backward_right"
+		elif last_axis.x < 0 && last_axis.y > 0:
+			next_animation = "enemy_idle_backward_left"
+		elif last_axis.x > 0 && last_axis.y < 0:
+			next_animation = "enemy_idle_foward_right"
+		elif last_axis.x < 0 && last_axis.y < 0:
+			next_animation = "enemy_idle_foward_left"
+	else:
+		if axis.x == 0 && axis.y > 0:
+			next_animation = "enemy_walk_backward"
+		elif axis.x == 0 && axis.y < 0:
+			next_animation = "enemywalk_foward"
+		elif axis.x > 0 && axis.y == 0:
+			next_animation = "enmy_walk_right"
+		elif axis.x < 0 && axis.y == 0:
+			next_animation = "enemy_walk_left"
+		elif axis.x > 0 && axis.y > 0:
+			next_animation = "enemy_walk_backward_right"
+		elif axis.x < 0 && axis.y > 0:
+			next_animation = "enemy_walk_backward_left"
+		elif axis.x > 0 && axis.y < 0:
+			next_animation = "enemy_walk_foward_right"
+		elif axis.x < 0 && axis.y < 0:
+			next_animation = "enemy_walk_foward_left"
+	last_axis = axis
 #	if next_animation != animation.current_animation:
 #		animation.play(next_animation)
 #		print(animation.current_animation)
-

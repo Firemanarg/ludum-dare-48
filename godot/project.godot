@@ -38,6 +38,11 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://scripts/level/Player.gd"
+}, {
+"base": "LightSource",
+"class": "PlayerLightSource",
+"language": "GDScript",
+"path": "res://scripts/level/LightSources/PlayerLightSource.gd"
 } ]
 _global_script_class_icons={
 "BaseLevel": "",
@@ -45,7 +50,8 @@ _global_script_class_icons={
 "Enemy": "",
 "InteractiveLightSource": "",
 "LightSource": "",
-"Player": ""
+"Player": "",
+"PlayerLightSource": ""
 }
 
 [application]

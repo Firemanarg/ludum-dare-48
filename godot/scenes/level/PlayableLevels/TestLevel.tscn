@@ -14,15 +14,12 @@ centered_textures = true
 
 [node name="Enemy" parent="Objects" index="1" instance=ExtResource( 2 )]
 position = Vector2( 1698.85, 62.9969 )
-position_list = PoolVector2Array( 982.85, 62.997, 1698.85, 62.997 )
 
 [node name="Enemy2" parent="Objects" index="2" instance=ExtResource( 2 )]
 position = Vector2( 529.36, -808.568 )
-position_list = PoolVector2Array( -922.069, -619.58, -410.541, -848.885, 529.36, -808.568 )
 
 [node name="Enemy3" parent="Objects" index="3" instance=ExtResource( 2 )]
 position = Vector2( -717.142, -216.509 )
-position_list = PoolVector2Array( -1088.59, 894.671, -1206.06, 358.13, -717.142, -216.509 )
 
 [node name="CanvasModulate" parent="." index="2"]
 visible = true

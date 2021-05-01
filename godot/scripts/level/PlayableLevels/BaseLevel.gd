@@ -18,6 +18,12 @@ func _ready() -> void:
 #	custom_sign.connect("interacted", self, "show_textbox")
 	pass
 
+func _process(delta: float) -> void:
+	if Input.is_action_pressed("ui_select"):
+		get_node("CanvasModulate").visible = false
+	else:
+		get_node("CanvasModulate").visible = true
+
 func update_global_light_sources():
 	Global.light_sources = []
 	for child in objects.get_children():

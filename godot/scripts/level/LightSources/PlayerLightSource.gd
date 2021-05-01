@@ -1,4 +1,5 @@
 extends LightSource
+class_name PlayerLightSource
 
 
 func _ready() -> void:
