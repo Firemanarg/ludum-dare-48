@@ -1,18 +1,19 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/textures/test_tile.png" type="Texture" id=1]
 [ext_resource path="res://scenes/level/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/level/PlayableLevels/BaseLevel.gd" type="Script" id=3]
+[ext_resource path="res://scenes/ui/Fade.tscn" type="PackedScene" id=4]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=3]
+[sub_resource type="NavigationPolygon" id=2]
 vertices = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="TileSet" id=2]
+[sub_resource type="TileSet" id=3]
 0/name = "test_tile.png 0"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
@@ -36,7 +37,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 1/tile_mode = 0
 1/occluder_offset = Vector2( 0, 0 )
 1/navigation_offset = Vector2( 0, 0 )
-1/navigation = SubResource( 3 )
+1/navigation = SubResource( 2 )
 1/shape_offset = Vector2( 0, 0 )
 1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 1/shape_one_way = false
@@ -50,7 +51,7 @@ script = ExtResource( 3 )
 [node name="Tilemaps" type="Navigation2D" parent="."]
 
 [node name="TileMap" type="TileMap" parent="Tilemaps"]
-tile_set = SubResource( 2 )
+tile_set = SubResource( 3 )
 format = 1
 
 [node name="Objects" type="YSort" parent="."]
@@ -58,5 +59,10 @@ format = 1
 [node name="Player" parent="Objects" instance=ExtResource( 2 )]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0, 0, 0, 1 )
 
 [node name="AudioStreamPlayerMusic" type="AudioStreamPlayer" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Fade" parent="CanvasLayer" instance=ExtResource( 4 )]

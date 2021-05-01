@@ -3,9 +3,11 @@ class_name BaseLevel
 
 onready var objects = get_node("Objects")
 onready var player = get_node("Objects/Player")
+onready var fade = get_node("CanvasLayer/Fade")
 
 
 func _ready() -> void:
+	fade.fade_in()
 	LevelManager.player = player
 	LevelManager.current_level = self
 	update_LevelManager_light_sources()
