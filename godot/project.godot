@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/level/Enemy.gd"
 }, {
+"base": "ColorRect",
+"class": "Fade",
+"language": "GDScript",
+"path": "res://scripts/ui/Fade.gd"
+}, {
 "base": "LightSource",
 "class": "InteractiveLightSource",
 "language": "GDScript",
@@ -43,21 +48,28 @@ _global_script_classes=[ {
 "class": "PlayerLightSource",
 "language": "GDScript",
 "path": "res://scripts/level/LightSources/PlayerLightSource.gd"
+}, {
+"base": "Control",
+"class": "TitleScreen",
+"language": "GDScript",
+"path": "res://scripts/ui/TitleScreen_v2.gd"
 } ]
 _global_script_class_icons={
 "BaseLevel": "",
 "CustomGradientTexture": "",
 "Enemy": "",
+"Fade": "",
 "InteractiveLightSource": "",
 "LightSource": "",
 "Player": "",
-"PlayerLightSource": ""
+"PlayerLightSource": "",
+"TitleScreen": ""
 }
 
 [application]
 
 config/name="Ludum Dare 48"
-run/main_scene="res://scenes/Menu/TitleScreen.tscn"
+run/main_scene="res://scenes/ui/TitleScreen_v2.tscn"
 config/icon="res://icon.png"
 
 [autoload]
