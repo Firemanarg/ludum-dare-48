@@ -23,6 +23,7 @@ func credits_action():
 func exit_action():
 	pass
 
+
 func _on_ButtonPlay_pressed() -> void:
 	fade.connect("fade_completed", self, "play_action")
 	fade.fade_out()

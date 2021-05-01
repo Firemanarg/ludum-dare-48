@@ -11,7 +11,7 @@ var seek = false
 var position_list: PoolVector2Array
 var i : int = 0
 var last_axis = Vector2(1,0)
-onready var animation = get_node("AnimationPlayer")
+onready var animation_player = get_node("AnimationPlayer")
 var patrol: bool = false
 var vision_range = 100
 
@@ -22,17 +22,21 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	var move_distance = speed * delta
-	move_along_path(move_distance)
-	light_detect()
-	patrol()
+	if Global.current_level:
+		var move_distance = speed * delta
+		move_along_path(move_distance)
+		light_detect()
+		patrol()
 
-	if self.transform.origin == last_seen:
-		if seek == false:
-#			print("ainnn entro")
-			timer.wait_time = seek_delay
-			seek = true
-			timer.start()
+		if self.transform.origin == last_seen:
+			if seek == false:
+	#			print("ainnn entro")
+				timer.wait_time = seek_delay
+				seek = true
+				timer.start()
+	else:
+		if not animation_player.is_playing():
+			animation_player.play("walk_foward")
 
 
 func move_along_path(distance : float) -> void:
@@ -77,17 +81,6 @@ func is_light_source_on_range(light_source: LightSource):
 	var distance = self.transform.origin.distance_to(Global.player.transform.origin)
 
 	vision_range = light_source.get_radius_converted()
-#	match light_source.current_step:
-#		0:
-#			vision_range = 100
-#		1:
-#			vision_range = 126
-#		2:
-#			vision_range = 176
-#		3:
-#			vision_range = 226
-#		4:
-#			vision_range = 276
 
 	var comparison = distance <= vision_range and light_source.is_enabled
 	#print("Distance: ", distance, " | Comparison: ", comparison)
@@ -155,6 +148,6 @@ func animation(axis) -> void:
 		elif axis.x < 0 && axis.y < 0:
 			next_animation = "enemy_walk_foward_left"
 	last_axis = axis
-#	if next_animation != animation.current_animation:
-#		animation.play(next_animation)
-#		print(animation.current_animation)
+#	if next_animation != animation_player.current_animation:
+#		animation_player.play(next_animation)
+#		print(animation_player.current_animation)
