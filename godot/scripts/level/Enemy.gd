@@ -8,7 +8,7 @@ onready var timer = get_node("Timer")
 export var seek_delay : int = 2
 var last_seen = null
 var seek = false
-var position_list: PoolVector2Array
+export var position_list: PoolVector2Array
 var i : int = 0
 var last_axis = Vector2(1,0)
 onready var animation_player = get_node("AnimationPlayer")
@@ -16,13 +16,14 @@ var patrol: bool = false
 var vision_range = 100
 
 func _ready() -> void:
-	position_list.append(Vector2(-299,400))
-	position_list.append(Vector2(-299,-37))
-	position_list.append(Vector2(-77,199))
+	pass
+#	position_list.append(Vector2(-299,400))
+#	position_list.append(Vector2(-299,-37))
+#	position_list.append(Vector2(-77,199))
 
 
 func _physics_process(delta: float) -> void:
-	if Global.current_level:
+	if LevelManager.current_level:
 		var move_distance = speed * delta
 		move_along_path(move_distance)
 		light_detect()
@@ -65,7 +66,7 @@ func set_path(value : PoolVector2Array) -> void:
 	set_process(true)
 
 func go_in_a_place(where) -> void:
-	var new_path = Global.nav_2d.get_simple_path(
+	var new_path = LevelManager.nav_2d.get_simple_path(
 		self.transform.origin,
 		where
 	)
@@ -78,7 +79,7 @@ func _on_Timer_timeout() -> void:
 	seek = false;
 
 func is_light_source_on_range(light_source: LightSource):
-	var distance = self.transform.origin.distance_to(Global.player.transform.origin)
+	var distance = self.transform.origin.distance_to(LevelManager.player.transform.origin)
 
 	vision_range = light_source.get_radius_converted()
 
@@ -87,9 +88,9 @@ func is_light_source_on_range(light_source: LightSource):
 	return comparison
 
 func light_detect() -> void:
-	if is_light_source_on_range(Global.player.light_source): #&& Global._playerLife > 0:
+	if is_light_source_on_range(LevelManager.player.light_source): #&& LevelManager._playerLife > 0:
 		speed = 250.0
-		go_in_a_place(Global.player.transform.origin)
+		go_in_a_place(LevelManager.player.transform.origin)
 		patrol = false
 	elif patrol == false:
 		timer.wait_time = seek_delay
@@ -99,8 +100,8 @@ func light_detect() -> void:
 func _on_Area2D_body_entered(body: Node) -> void:
 	print("asdyhvasdguaysdb     " + body.name)
 	if not body == self.get_node("Area2D"):
-		Global._playerLife -= 1
-		if(Global._playerLife <= 0):
+		LevelManager._playerLife -= 1
+		if(LevelManager._playerLife <= 0):
 			print("You died !!!")
 
 func patrol() -> void:

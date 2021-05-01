@@ -6,12 +6,12 @@ onready var chatbox = $Control
 onready var node = get_node("CanvasLayer/Control")
 
 func _on_Area2D_body_entered(body: Node) -> void:
-	if body == Global.player:
+	if body == LevelManager.player:
 		can_interact = true
 
 
 func _on_Area2D_body_exited(body: Node) -> void:
-	if body == Global.player:
+	if body == LevelManager.player:
 		can_interact = false
 
 func _input(event: InputEvent) -> void:

@@ -6,15 +6,15 @@ onready var player = get_node("Objects/Player")
 
 
 func _ready() -> void:
-	Global.player = player
-	Global.current_level = self
-	update_global_light_sources()
-	update_global_enemies()
-	Global.nav_2d = get_node("Tilemaps")
-	Global.Enemy = get_node("Enemy")
-	Global._playerLife = 1
-#	Global.light_sources.append(get_node("InteractiveLightSource"))
-#	Global.light_sources.append(get_node("InteractiveLightSource2"))
+	LevelManager.player = player
+	LevelManager.current_level = self
+	update_LevelManager_light_sources()
+	update_LevelManager_enemies()
+	LevelManager.nav_2d = get_node("Tilemaps")
+	LevelManager.Enemy = get_node("Enemy")
+	LevelManager._playerLife = 1
+#	LevelManager.light_sources.append(get_node("InteractiveLightSource"))
+#	LevelManager.light_sources.append(get_node("InteractiveLightSource2"))
 #	custom_sign.connect("interacted", self, "show_textbox")
 	pass
 
@@ -24,14 +24,14 @@ func _process(delta: float) -> void:
 	else:
 		get_node("CanvasModulate").visible = true
 
-func update_global_light_sources():
-	Global.light_sources = []
+func update_LevelManager_light_sources():
+	LevelManager.light_sources = []
 	for child in objects.get_children():
 		if child is LightSource:
-			Global.light_sources.append(child)
+			LevelManager.light_sources.append(child)
 
-func update_global_enemies():
-	Global.enemies = []
+func update_LevelManager_enemies():
+	LevelManager.enemies = []
 	for child in objects.get_children():
 		if child is Enemy:
-			Global.enemies.append(child)
+			LevelManager.enemies.append(child)

@@ -28,11 +28,11 @@ func get_radius_converted(step = null) -> float:
 func get_radius(step = null) -> float:
 	if not step:
 		step = current_step
-	return Global.map(step, 0, light_steps-1, min_radius, max_radius)
+	return GlobalFunctions.map(step, 0, light_steps-1, min_radius, max_radius)
 
 func set_radius(radius: float) -> void:
 	var fixed_radius = clamp(radius, min_radius, max_radius)
-	var step = Global.map(fixed_radius, min_radius, max_radius, 0, light_steps-1)
+	var step = GlobalFunctions.map(fixed_radius, min_radius, max_radius, 0, light_steps-1)
 	step = int( round( clamp(step, 0.0, light_steps-1) ) )
 	radius_transition(get_radius(), get_radius(step))
 	current_step = step
