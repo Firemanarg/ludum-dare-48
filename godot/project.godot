@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/level/LightSources/LightSource.gd"
 }, {
+"base": "Node2D",
+"class": "LoadingScreen",
+"language": "GDScript",
+"path": "res://scripts/ui/LoadingScreen.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -67,6 +72,7 @@ _global_script_class_icons={
 "Fade": "",
 "InteractiveLightSource": "",
 "LightSource": "",
+"LoadingScreen": "",
 "Player": "",
 "PlayerLightSource": "",
 "TitleScreen": ""
@@ -80,7 +86,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Global="*res://scripts/Global.gd"
+Global="*res://scripts/Globals/Global.gd"
 
 [input]
 

@@ -1,28 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/menu/Fundo.png" type="Texture" id=1]
 [ext_resource path="res://scenes/level/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/CursorFollowingLight.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/ui/LoadingScreen.gd" type="Script" id=4]
+[ext_resource path="res://scenes/ui/Fade.tscn" type="PackedScene" id=5]
 
 [node name="LoadingScreen" type="Node2D"]
+script = ExtResource( 4 )
 
 [node name="Background" type="Sprite" parent="."]
 scale = Vector2( 0.749653, 0.875767 )
 texture = ExtResource( 1 )
 centered = false
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 1 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -35,3 +25,7 @@ color = Color( 0, 0, 0, 1 )
 [node name="Light2D" parent="." instance=ExtResource( 3 )]
 texture_scale = 1.5
 energy = 1.5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Fade" parent="CanvasLayer" instance=ExtResource( 5 )]

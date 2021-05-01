@@ -12,6 +12,7 @@ func _ready() -> void:
 	pass
 
 func play_action():
+	get_tree().change_scene_to(load("res://scenes/level/PlayableLevels/TestLevel.tscn"))
 	pass
 
 func options_action():
