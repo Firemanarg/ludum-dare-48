@@ -13,10 +13,13 @@ enum fade_type {
 	FADE_OUT
 }
 
+signal fade_completed
+
 func _ready() -> void:
 	pass
 
 func fade_in(duration: float = fade_time):
+	mouse_filter = MOUSE_FILTER_STOP
 	tween.interpolate_property(
 		self,
 		"color",
@@ -31,6 +34,7 @@ func fade_in(duration: float = fade_time):
 	pass
 
 func fade_out(duration: float = fade_time):
+	mouse_filter = MOUSE_FILTER_STOP
 	tween.interpolate_property(
 		self,
 		"color",
@@ -46,8 +50,6 @@ func fade_out(duration: float = fade_time):
 
 
 func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
-	if current_fade == fade_type.FADE_IN:
-		mouse_filter = MOUSE_FILTER_IGNORE
-	elif current_fade == fade_type.FADE_OUT:
-		mouse_filter = MOUSE_FILTER_STOP
+	mouse_filter = MOUSE_FILTER_IGNORE
+	emit_signal("fade_completed")
 	pass

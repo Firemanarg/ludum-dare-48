@@ -11,17 +11,37 @@ func _ready() -> void:
 	fade.fade_in()
 	pass
 
+func play_action():
+	pass
+
+func options_action():
+	pass
+
+func credits_action():
+	pass
+
+func exit_action():
+	pass
+
 func _on_ButtonPlay_pressed() -> void:
+	fade.connect("fade_completed", self, "play_action")
+	fade.fade_out()
 	pass
 
 
 func _on_ButtonOptions_pressed() -> void:
+	fade.connect("fade_completed", self, "options_action")
+	fade.fade_out()
 	pass
 
 
 func _on_ButtonCredits_pressed() -> void:
+	fade.connect("fade_completed", self, "credits_action")
+	fade.fade_out()
 	pass
 
 
 func _on_ButtonExit_pressed() -> void:
+	fade.connect("fade_completed", self, "exit_action")
+	fade.fade_out()
 	pass
