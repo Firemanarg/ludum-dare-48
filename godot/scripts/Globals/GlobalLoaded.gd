@@ -14,8 +14,6 @@ const SIMULATED_DELAY_SEC = 0.1
 
 var thread = null
 
-onready var progress = $Progress
-
 func add_resource_to_query(_name: String, path: String):
 	resources_queue.append( {"name": _name, "path": path} )
 	pass
@@ -62,6 +60,7 @@ func _thread_load(path):
 
 				# Load next scene
 			if not resources_queue.empty():
+#				thread.wait_to_finish()
 				load_scene( resources_queue[0]["path"] )
 				break
 		elif err != OK:

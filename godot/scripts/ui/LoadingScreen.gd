@@ -11,9 +11,13 @@ var loading_text_step = 0
 func _ready() -> void:
 	GlobalLoaded.loading_screen = self
 	fade.connect("fade_completed", self, "goto_level_scene")
+
 	GlobalLoaded.add_resource_to_query("Scene-TestLevel", "res://scenes/level/PlayableLevels/TestLevel.tscn")
 	GlobalLoaded.add_resource_to_query("Scene-TitleScreen", "res://scenes/ui/TitleScreen.tscn")
 	GlobalLoaded.add_resource_to_query("Scene-OptionsScreen", "res://scenes/ui/OptionsScreen.tscn")
+	GlobalLoaded.add_resource_to_query("Node-DialogBox", "res://scenes/level/DialogBox.tscn")
+#	GlobalLoaded.add_resource_to_query("Node-InteractableTorch", "res://scenes/level/Interactable/InteractableTorch.tscn")
+
 	GlobalLoaded.start_load()
 	pass
 

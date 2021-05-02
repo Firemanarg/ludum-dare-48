@@ -26,6 +26,9 @@ func get_radius_converted(step = null) -> float:
 	return result
 
 func get_radius(step = null) -> float:
+	if light_steps == 1:
+		return max_radius
+
 	if not step:
 		step = current_step
 	return GlobalFunctions.map(step, 0, light_steps-1, min_radius, max_radius)
@@ -41,7 +44,7 @@ func radius_transition(initial_radius: float, final_radius: float):
 	tween.stop_all()
 	tween.interpolate_property(self, "texture_scale", initial_radius, final_radius, tween_duration, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	tween.start()
-	print("Interpolating from ", initial_radius, " to ", final_radius)
+#	print("Interpolating from ", initial_radius, " to ", final_radius)
 
 func turn_on():
 	if not self.visible:

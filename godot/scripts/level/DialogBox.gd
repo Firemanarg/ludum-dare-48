@@ -1,4 +1,5 @@
 extends Control
+class_name DialogBox
 
 export var dialog = []
 
@@ -17,6 +18,7 @@ func _process(delta):
 			$Tween.stop_all()
 
 func load_dialog():
+	print("Loading dialog ", dialog_index, "/", dialog.size())
 	if dialog_index < dialog.size():
 		finished = false
 		$RichTextLabel.bbcode_text = dialog[dialog_index]
@@ -30,6 +32,9 @@ func load_dialog():
 	else:
 		dialog_index = 0
 		self.visible = false
+
+func has_finished() -> bool:
+	return dialog_index >= dialog.size()
 
 func _on_Tween_tween_completed(object, key):
 	finished = true

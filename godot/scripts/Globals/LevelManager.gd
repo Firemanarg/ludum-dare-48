@@ -17,3 +17,11 @@ func map(value, low1, high1, low2, high2):
 
 func is_game_active():
 	return is_game_active
+
+func show_dialog_box(dialog):
+	if current_level:
+		current_level.show_dialog_box(dialog)
+
+func hide_dialog_box():
+	if current_level:
+		current_level.hide_dialog_box()
