@@ -82,7 +82,7 @@ func apply_movement(acceleration):
 		motion = motion.normalized() * MAX_SPEED
 
 func take_damage():
-	LevelManager._playerLife -= 1
-	if(LevelManager._playerLife <= 0):
+	if LevelManager._playerLife > 0:
+		LevelManager._playerLife -= 1
 		print("You died !!!")
 
