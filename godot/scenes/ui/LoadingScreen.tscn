@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/menu/Fundo.png" type="Texture" id=1]
+[ext_resource path="res://assets/textures/ui/background.png" type="Texture" id=1]
 [ext_resource path="res://scenes/level/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/CursorFollowingLight.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scripts/ui/LoadingScreen.gd" type="Script" id=4]
@@ -23,6 +23,7 @@ position = Vector2( 161.509, 265.702 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="Light2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0.943874, 0 )
 texture_scale = 1.5
 energy = 1.5
 
