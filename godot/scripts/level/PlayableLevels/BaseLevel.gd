@@ -29,12 +29,16 @@ func _process(delta: float) -> void:
 		get_node("CanvasModulate").visible = true
 
 func adjust_audio_levels():
-	audio_player_music.volume_db = GlobalFunctions.map(
-		GameSettings.music_level,
-		0.0, 1.0,
-		GameSettings.min_music_volume_db,
-		GameSettings.max_music_volume_db
-	)
+	# Mute music audio
+	if audio_player_music.volume_db == 0.0:
+		audio_player_music.volume_db = -500
+	else:
+		audio_player_music.volume_db = GlobalFunctions.map(
+			GameSettings.music_level,
+			0.0, 1.0,
+			GameSettings.min_music_volume_db,
+			GameSettings.max_music_volume_db
+		)
 
 func update_LevelManager_light_sources():
 	LevelManager.light_sources = []
