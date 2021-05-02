@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 
 func adjust_audio_levels():
 	# Mute music audio
-	if audio_player_music.volume_db == 0.0:
+	if GameSettings.music_level == 0.0:
 		audio_player_music.volume_db = -500
 	else:
 		audio_player_music.volume_db = GlobalFunctions.map(
