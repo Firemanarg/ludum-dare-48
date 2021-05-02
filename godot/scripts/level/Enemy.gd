@@ -88,7 +88,7 @@ func is_light_source_on_range(light_source: LightSource):
 	return comparison
 
 func light_detect() -> void:
-	if is_light_source_on_range(LevelManager.player.light_source): #&& LevelManager._playerLife > 0:
+	if is_light_source_on_range(LevelManager.player.light_source) && LevelManager._playerLife > 0:
 		speed = 250.0
 		go_in_a_place(LevelManager.player.transform.origin)
 		patrol = false
