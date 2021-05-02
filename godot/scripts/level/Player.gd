@@ -16,6 +16,10 @@ func _physics_process(delta):
 	else:
 		apply_movement(axis * ACCELERATION * delta)
 	motion = move_and_slide(motion)
+	for i in get_slide_count():
+		var collider = get_slide_collision(i).collider
+		if collider is Enemy:
+			take_damage()
 
 func get_input_axis():
 	var axis = Vector2.ZERO
@@ -76,3 +80,9 @@ func apply_movement(acceleration):
 	motion = motion.clamped(MAX_SPEED)
 	if motion.length() > MAX_SPEED:
 		motion = motion.normalized() * MAX_SPEED
+
+func take_damage():
+	LevelManager._playerLife -= 1
+	if(LevelManager._playerLife <= 0):
+		print("You died !!!")
+
