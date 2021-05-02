@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/level/PlayableLevels/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/level/Interactive/InteractiveTextbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/level/Interactive/InteractiveTorch.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/level/Interactive/BaseInteractive.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/level/Interactive/InteractiveKey.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/level/Interactive/InteractiveDoor.tscn" type="PackedScene" id=6]
 
 [node name="TestLevel" instance=ExtResource( 1 )]
 
@@ -21,3 +23,9 @@ position = Vector2( -218.249, 361.277 )
 
 [node name="BaseInteractive" parent="." index="7" instance=ExtResource( 4 )]
 position = Vector2( 166.121, -17.3244 )
+
+[node name="InteractiveKey" parent="." index="8" instance=ExtResource( 5 )]
+position = Vector2( 83, -7 )
+
+[node name="InteractiveDoor" parent="." index="9" instance=ExtResource( 6 )]
+position = Vector2( -162.11, -60.1546 )

@@ -4,6 +4,7 @@ var nav_2d : Navigation2D = null
 var Enemy : Enemy = null
 var player : Player = null
 var _playerLife : int = 0
+var picked_up_the_key = false
 
 var enemies : Array = []
 var light_sources: Array = []
