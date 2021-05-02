@@ -4,6 +4,7 @@ class_name BaseLevel
 onready var objects = get_node("Objects")
 onready var player = get_node("Objects/Player")
 onready var fade = get_node("CanvasLayer/Fade")
+onready var audio_player = get_node("AudioStreamPlayerMusic")
 
 
 func _ready() -> void:

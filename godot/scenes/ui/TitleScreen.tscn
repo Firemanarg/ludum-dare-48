@@ -183,6 +183,8 @@ custom_colors/font_color_hover = Color( 0.513726, 0.513726, 0.513726, 1 )
 custom_colors/font_color_pressed = Color( 0.235294, 0.235294, 0.235294, 1 )
 text = "Exit"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [node name="Fade" parent="." instance=ExtResource( 5 )]
 mouse_filter = 2
 fade_time = 1.5
