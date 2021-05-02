@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://assets/textures/player/walking/forward_right/walking_forward_right_03.png" type="Texture" id=1]
 [ext_resource path="res://scripts/level/Player.gd" type="Script" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://assets/textures/player/walking/forward_right/walking_forward_right_02.png" type="Texture" id=22]
 [ext_resource path="res://assets/textures/player/walking/forward_right/walking_forward_right_01.png" type="Texture" id=23]
 [ext_resource path="res://assets/textures/player/walking/right/walking_right_04.png" type="Texture" id=24]
+[ext_resource path="res://assets/textures/player/idle/backward/idle_backward_01.png" type="Texture" id=25]
 [ext_resource path="res://assets/textures/player/walking/right/walking_right_01.png" type="Texture" id=26]
 [ext_resource path="res://assets/textures/player/walking/right/walking_right_02.png" type="Texture" id=27]
 [ext_resource path="res://assets/textures/player/walking/right/walking_right_03.png" type="Texture" id=28]
@@ -131,9 +132,9 @@ smoothing_enabled = true
 smoothing_speed = 3.0
 
 [node name="player" type="Sprite" parent="."]
-position = Vector2( -5, -41.5 )
+position = Vector2( -2.6, -43 )
 scale = Vector2( 0.15, 0.15 )
-texture = ExtResource( 26 )
+texture = ExtResource( 25 )
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2( 0.466736, -16.2935 )
