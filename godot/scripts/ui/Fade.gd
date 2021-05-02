@@ -19,6 +19,7 @@ func _ready() -> void:
 	pass
 
 func fade_in(duration: float = fade_time):
+	color = target_color
 	mouse_filter = MOUSE_FILTER_STOP
 	tween.interpolate_property(
 		self,
@@ -34,6 +35,7 @@ func fade_in(duration: float = fade_time):
 	pass
 
 func fade_out(duration: float = fade_time):
+	color = initial_color
 	mouse_filter = MOUSE_FILTER_STOP
 	tween.interpolate_property(
 		self,

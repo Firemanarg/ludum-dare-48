@@ -7,7 +7,7 @@ onready var fade = get_node("CanvasLayer/Fade")
 
 
 func _ready() -> void:
-	fade.fade_in()
+	fade.fade_in(1.0)
 	LevelManager.player = player
 	LevelManager.current_level = self
 	update_LevelManager_light_sources()

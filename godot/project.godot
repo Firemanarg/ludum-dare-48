@@ -81,14 +81,15 @@ _global_script_class_icons={
 [application]
 
 config/name="Ludum Dare 48"
-run/main_scene="res://scenes/ui/TitleScreen.tscn"
+run/main_scene="res://scenes/ui/LoadingScreen.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-LevelManager="*res://scripts/Globals/LevelManager.gd"
-GlobalLoaded="*res://scripts/Globals/GlobalLoaded.gd"
 GlobalFunctions="*res://scripts/Globals/GlobalFunctions.gd"
+LevelManager="*res://scripts/Globals/LevelManager.gd"
+ResourceQueue="*res://scripts/Globals/resource_queue.gd"
+GlobalLoaded="*res://scripts/Globals/GlobalLoaded.gd"
 
 [input]
 
