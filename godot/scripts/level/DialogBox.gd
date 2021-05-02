@@ -1,18 +1,13 @@
 extends Control
 
-var dialog = [
-	'Hello there',
-	'Put  the text here',
-	'ok?'
-]
+export var dialog = []
 
 var dialog_index = 0
 var finished = false
 
-func _ready():
-	load_dialog()
-
 func _process(delta):
+	if(dialog_index == 0):
+		load_dialog()
 	if Input.is_action_just_pressed("ui_accept"):
 		if finished == true:
 			load_dialog()
@@ -31,10 +26,10 @@ func load_dialog():
 			Tween.TRANS_LINEAR, Tween.EASE_IN_OUT
 		)
 		$Tween.start()
+		dialog_index += 1
 	else:
-		queue_free()
-	dialog_index += 1
-
+		dialog_index = 0
+		self.visible = false
 
 func _on_Tween_tween_completed(object, key):
 	finished = true
