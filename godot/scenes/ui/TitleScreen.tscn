@@ -189,7 +189,11 @@ text = "Exit"
 mouse_filter = 2
 fade_time = 1.5
 
+[connection signal="mouse_entered" from="Background/VBoxContainer/VBoxContainer/CenterContainerPlay/ButtonPlay" to="." method="_on_ButtonPlay_mouse_entered"]
 [connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/CenterContainerPlay/ButtonPlay" to="." method="_on_ButtonPlay_pressed"]
+[connection signal="mouse_entered" from="Background/VBoxContainer/VBoxContainer/CenterContainerOptions/ButtonOptions" to="." method="_on_ButtonOptions_mouse_entered"]
 [connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/CenterContainerOptions/ButtonOptions" to="." method="_on_ButtonOptions_pressed"]
+[connection signal="mouse_entered" from="Background/VBoxContainer/VBoxContainer/CenterContainerCredits/ButtonCredits" to="." method="_on_ButtonCredits_mouse_entered"]
 [connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/CenterContainerCredits/ButtonCredits" to="." method="_on_ButtonCredits_pressed"]
+[connection signal="mouse_entered" from="Background/VBoxContainer/VBoxContainer/CenterContainerExit/ButtonExit" to="." method="_on_ButtonExit_mouse_entered"]
 [connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/CenterContainerExit/ButtonExit" to="." method="_on_ButtonExit_pressed"]
