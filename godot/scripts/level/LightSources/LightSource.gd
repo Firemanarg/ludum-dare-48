@@ -22,7 +22,7 @@ func _ready() -> void:
 
 func get_radius_converted(step = null) -> float:
 	var result = (get_radius(step) * IMAGE_ORIGINAL_SIZE) * 0.3
-	print("radius = ", get_radius(), " | converted = ", result)
+#	print("radius = ", get_radius(), " | converted = ", result)
 	return result
 
 func get_radius(step = null) -> float:

@@ -97,13 +97,6 @@ func light_detect() -> void:
 		timer.start()
 		patrol = true
 
-func _on_Area2D_body_entered(body: Node) -> void:
-	print("asdyhvasdguaysdb     " + body.name)
-	if not body == self.get_node("Area2D"):
-		LevelManager._playerLife -= 1
-		if(LevelManager._playerLife <= 0):
-			print("You died !!!")
-
 func patrol() -> void:
 	if patrol == true && next_patrol_position == self.transform.origin:
 		speed = 100.0
