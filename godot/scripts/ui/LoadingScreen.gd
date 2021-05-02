@@ -13,6 +13,7 @@ func _ready() -> void:
 	fade.connect("fade_completed", self, "goto_level_scene")
 	GlobalLoaded.add_resource_to_query("Scene-TestLevel", "res://scenes/level/PlayableLevels/TestLevel.tscn")
 	GlobalLoaded.add_resource_to_query("Scene-TitleScreen", "res://scenes/ui/TitleScreen.tscn")
+	GlobalLoaded.add_resource_to_query("Audio-MenuChoosing")
 	GlobalLoaded.start_load()
 	pass
 
