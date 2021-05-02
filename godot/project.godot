@@ -54,6 +54,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/ui/LoadingScreen.gd"
 }, {
+"base": "Control",
+"class": "OptionsScreen",
+"language": "GDScript",
+"path": "res://scripts/ui/OptionsScreen.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -79,6 +84,7 @@ _global_script_class_icons={
 "InteractiveLightSource": "",
 "LightSource": "",
 "LoadingScreen": "",
+"OptionsScreen": "",
 "Player": "",
 "PlayerLightSource": "",
 "TitleScreen": ""

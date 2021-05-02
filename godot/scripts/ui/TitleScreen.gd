@@ -25,10 +25,11 @@ func play_selected_sound():
 
 
 func play_action():
-	get_tree().change_scene_to(load("res://scenes/level/PlayableLevels/TestLevel.tscn"))
+	get_tree().change_scene_to( GlobalLoaded.get_resource("Scene-TestLevel") )
 	pass
 
 func options_action():
+	get_tree().change_scene_to( GlobalLoaded.get_resource("Scene-OptionsScreen") )
 	pass
 
 func credits_action():

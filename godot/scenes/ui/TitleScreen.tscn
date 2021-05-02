@@ -184,6 +184,7 @@ custom_colors/font_color_pressed = Color( 0.235294, 0.235294, 0.235294, 1 )
 text = "Exit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -25.0
 
 [node name="Fade" parent="." instance=ExtResource( 5 )]
 mouse_filter = 2
