@@ -4,10 +4,11 @@ class_name BaseLevel
 onready var objects = get_node("Objects")
 onready var player = get_node("Objects/Player")
 onready var fade = get_node("CanvasLayer/Fade")
-onready var audio_player = get_node("AudioStreamPlayerMusic")
+onready var audio_player_music = get_node("AudioStreamPlayerMusic")
 
 
 func _ready() -> void:
+	adjust_audio_levels()
 	fade.fade_in(1.0)
 	LevelManager.player = player
 	LevelManager.current_level = self
@@ -26,6 +27,14 @@ func _process(delta: float) -> void:
 		get_node("CanvasModulate").visible = false
 	else:
 		get_node("CanvasModulate").visible = true
+
+func adjust_audio_levels():
+	audio_player_music.volume_db = GlobalFunctions.map(
+		GameSettings.music_level,
+		0.0, 1.0,
+		GameSettings.min_music_volume_db,
+		GameSettings.max_music_volume_db
+	)
 
 func update_LevelManager_light_sources():
 	LevelManager.light_sources = []

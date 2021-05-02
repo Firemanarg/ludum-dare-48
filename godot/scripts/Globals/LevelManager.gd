@@ -10,5 +10,10 @@ var enemies : Array = []
 var light_sources: Array = []
 var current_level = null
 
+var is_game_active = true
+
 func map(value, low1, high1, low2, high2):
 	return low2 + (value - low1) * (high2 - low2) / (high1 - low1)
+
+func is_game_active():
+	return is_game_active

@@ -102,6 +102,7 @@ GlobalFunctions="*res://scripts/Globals/GlobalFunctions.gd"
 LevelManager="*res://scripts/Globals/LevelManager.gd"
 ResourceQueue="*res://scripts/Globals/resource_queue.gd"
 GlobalLoaded="*res://scripts/Globals/GlobalLoaded.gd"
+GameSettings="*res://scripts/Globals/GameSettings.gd"
 
 [input]
 

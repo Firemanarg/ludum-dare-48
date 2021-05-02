@@ -93,7 +93,7 @@ custom_fonts/font = SubResource( 5 )
 text = "Sound Volume"
 align = 1
 
-[node name="HSliderSounds" type="HSlider" parent="Background/MarginContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+[node name="HSliderSound" type="HSlider" parent="Background/MarginContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
 margin_top = 197.0
 margin_right = 467.0
 margin_bottom = 247.0
@@ -102,7 +102,9 @@ mouse_default_cursor_shape = 2
 custom_icons/grabber_disabled = ExtResource( 7 )
 custom_icons/grabber_highlight = ExtResource( 7 )
 custom_icons/grabber = ExtResource( 7 )
-value = 50.0
+max_value = 1.0
+step = 0.1
+value = 1.0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Background/MarginContainer/VBoxContainer2/HBoxContainer"]
 margin_left = 517.0
@@ -129,7 +131,9 @@ mouse_default_cursor_shape = 2
 custom_icons/grabber_disabled = ExtResource( 7 )
 custom_icons/grabber_highlight = ExtResource( 7 )
 custom_icons/grabber = ExtResource( 7 )
-value = 50.0
+max_value = 1.0
+step = 0.1
+value = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer/VBoxContainer2"]
 margin_top = 497.0
@@ -174,5 +178,7 @@ volume_db = -25.0
 mouse_filter = 2
 fade_time = 1.5
 
+[connection signal="value_changed" from="Background/MarginContainer/VBoxContainer2/HBoxContainer/VBoxContainer/HSliderSound" to="." method="_on_HSliderSound_value_changed"]
+[connection signal="value_changed" from="Background/MarginContainer/VBoxContainer2/HBoxContainer/VBoxContainer2/HSliderMusic" to="." method="_on_HSliderMusic_value_changed"]
 [connection signal="mouse_entered" from="Background/MarginContainer/VBoxContainer2/VBoxContainer/CenterContainerBack/ButtonBack" to="." method="_on_ButtonBack_mouse_entered"]
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer2/VBoxContainer/CenterContainerBack/ButtonBack" to="." method="_on_ButtonBack_pressed"]
