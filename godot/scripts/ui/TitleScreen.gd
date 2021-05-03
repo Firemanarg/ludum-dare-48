@@ -40,6 +40,7 @@ func credits_action():
 	pass
 
 func exit_action():
+	get_tree().quit()
 	pass
 
 

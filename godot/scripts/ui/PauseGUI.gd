@@ -73,18 +73,33 @@ func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
 
 
 func _on_HSliderSound_value_changed(value: float) -> void:
+	GameSettings.set_sound_level(value)
+	adjust_audio_levels()
 	pass
 
 
 func _on_HSliderMusic_value_changed(value: float) -> void:
+	GameSettings.set_music_level(value)
+	adjust_audio_levels()
 	pass
 
 
 func _on_ButtonBack_pressed() -> void:
+	play_selected_sound()
 	LevelManager.unpause_game()
 	pass
 
 
 func _on_ButtonBack_mouse_entered() -> void:
+	play_choosing_sound()
 	pass
 
+
+func _on_ButtonReturnMenu_pressed() -> void:
+	play_selected_sound()
+	pass
+
+
+func _on_ButtonReturnMenu_mouse_entered() -> void:
+	play_choosing_sound()
+	pass
