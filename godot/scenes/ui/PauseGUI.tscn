@@ -1,0 +1,206 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/fonts/ink-free-normal.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/textures/ui/base_button.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/ui/slider_ball.png" type="Texture" id=3]
+[ext_resource path="res://assets/Fonts/ink-free-normal.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://scripts/ui/PauseGUI.gd" type="Script" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0470588, 0.0470588, 0.0470588, 1 )
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_bottom_right = 30
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="DynamicFont" id=5]
+size = 40
+use_filter = true
+font_data = ExtResource( 4 )
+
+[node name="PauseGUI" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContainerPauseGUI" type="MarginContainer" parent="."]
+anchor_bottom = 1.0
+margin_right = 440.0
+custom_constants/margin_right = 20
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="ContainerPauseGUI"]
+margin_right = 400.0
+margin_bottom = 580.0
+rect_min_size = Vector2( 400, 0 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="ContainerPauseGUI/PanelContainer"]
+margin_right = 398.0
+margin_bottom = 578.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContainerPauseGUI/PanelContainer/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 378.0
+margin_bottom = 558.0
+
+[node name="CenterContainer" type="CenterContainer" parent="ContainerPauseGUI/PanelContainer/MarginContainer/VBoxContainer"]
+margin_right = 358.0
+margin_bottom = 51.0
+
+[node name="TextureRect" type="TextureRect" parent="ContainerPauseGUI/PanelContainer/MarginContainer/VBoxContainer/CenterContainer"]
+margin_left = 4.0
+margin_right = 354.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 350, 50 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="ContainerPauseGUI/PanelContainer/MarginContainer/VBoxContainer/CenterContainer"]
+margin_left = 64.0
+margin_right = 293.0
+margin_bottom = 51.0
+custom_fonts/font = SubResource( 2 )
+text = "Game Paused"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="ContainerPauseGUI/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 55.0
+margin_right = 358.0
+margin_bottom = 59.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContainerPauseGUI/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 63.0
+margin_right = 358.0
+margin_bottom = 483.0
+size_flags_vertical = 3
+custom_constants/separation = 50
+alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="ContainerPauseGUI/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+margin_top = 116.0
+margin_right = 358.0
+margin_bottom = 304.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContainerPauseGUI/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer3"]
+margin_right = 358.0
+margin_bottom = 92.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="ContainerPauseGUI/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer3/VBoxContainer"]
+margin_right = 358.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 3 )
+text = "Sound Volume"
+align = 1
+
+[node name="HSliderSound" type="HSlider" parent="ContainerPauseGUI/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer3/VBoxContainer"]
+margin_top = 42.0
+margin_right = 358.0
+margin_bottom = 92.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+custom_icons/grabber_disabled = ExtResource( 3 )
+custom_icons/grabber_highlight = ExtResource( 3 )
+custom_icons/grabber = ExtResource( 3 )
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ContainerPauseGUI/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer3"]
+margin_top = 96.0
+margin_right = 358.0
+margin_bottom = 188.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="ContainerPauseGUI/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer3/VBoxContainer2"]
+margin_right = 358.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 3 )
+text = "Music Volume"
+align = 1
+
+[node name="HSliderMusic" type="HSlider" parent="ContainerPauseGUI/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer3/VBoxContainer2"]
+margin_top = 42.0
+margin_right = 358.0
+margin_bottom = 92.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+custom_icons/grabber_disabled = ExtResource( 3 )
+custom_icons/grabber_highlight = ExtResource( 3 )
+custom_icons/grabber = ExtResource( 3 )
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="CenterContainerBack" type="CenterContainer" parent="ContainerPauseGUI/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 487.0
+margin_right = 358.0
+margin_bottom = 538.0
+
+[node name="TextureRect" type="TextureRect" parent="ContainerPauseGUI/PanelContainer/MarginContainer/VBoxContainer/CenterContainerBack"]
+margin_left = 45.0
+margin_top = 12.0
+margin_right = 313.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 268, 26 )
+texture = ExtResource( 2 )
+stretch_mode = 6
+
+[node name="ButtonBack" type="Button" parent="ContainerPauseGUI/PanelContainer/MarginContainer/VBoxContainer/CenterContainerBack"]
+margin_left = 79.0
+margin_right = 279.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 200, 0 )
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color_disabled = Color( 0.180392, 0.180392, 0.180392, 1 )
+custom_colors/font_color = Color( 0.32549, 0.32549, 0.32549, 1 )
+custom_colors/font_color_hover = Color( 0.513726, 0.513726, 0.513726, 1 )
+custom_colors/font_color_pressed = Color( 0.235294, 0.235294, 0.235294, 1 )
+text = "Back"
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="value_changed" from="ContainerPauseGUI/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer3/VBoxContainer/HSliderSound" to="." method="_on_HSliderSound_value_changed"]
+[connection signal="value_changed" from="ContainerPauseGUI/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer3/VBoxContainer2/HSliderMusic" to="." method="_on_HSliderMusic_value_changed"]
+[connection signal="mouse_entered" from="ContainerPauseGUI/PanelContainer/MarginContainer/VBoxContainer/CenterContainerBack/ButtonBack" to="." method="_on_ButtonBack_mouse_entered"]
+[connection signal="pressed" from="ContainerPauseGUI/PanelContainer/MarginContainer/VBoxContainer/CenterContainerBack/ButtonBack" to="." method="_on_ButtonBack_pressed"]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

@@ -12,11 +12,42 @@ var current_level = null
 
 var is_game_active = true
 
+func _ready() -> void:
+	self.pause_mode = Node.PAUSE_MODE_PROCESS
+	pass
+
+func _process(delta: float) -> void:
+	if current_level:
+		var switch = Input.is_action_just_pressed("pause_game")
+		if switch:
+			print("Pause game action just pressed")
+			if is_game_active:
+				pause_game()
+			else:
+				unpause_game()
+	pass
+
 func is_game_active():
 	return is_game_active
 
 func set_game_active(state: bool):
 	is_game_active = state
+
+func pause_game():
+	is_game_active = false
+	if current_level:
+		current_level.get_tree().paused = true
+		current_level.pause_gui.show()
+		current_level.fade.fade_out()
+#		current_level.pause_mode = Node.PAUSE_MODE_STOP
+
+func unpause_game():
+	is_game_active = true
+	if current_level:
+		current_level.get_tree().paused = false
+		current_level.pause_gui.hide()
+		current_level.fade.fade_in()
+#		current_level.pause_mode = Node.PAUSE_MODE_INHERIT
 
 func show_dialog_box(dialog):
 	if current_level:

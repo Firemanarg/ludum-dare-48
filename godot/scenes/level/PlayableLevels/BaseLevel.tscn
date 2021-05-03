@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/textures/test_tile.png" type="Texture" id=1]
 [ext_resource path="res://scenes/level/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/level/PlayableLevels/BaseLevel.gd" type="Script" id=3]
 [ext_resource path="res://scenes/ui/Fade.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/ui/PauseGUI.tscn" type="PackedScene" id=5]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -115,3 +116,5 @@ color = Color( 0, 0, 0, 1 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Fade" parent="CanvasLayer" instance=ExtResource( 4 )]
+
+[node name="PauseGUI" parent="CanvasLayer" instance=ExtResource( 5 )]

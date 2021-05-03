@@ -6,6 +6,7 @@ onready var player = get_node("Objects/Player")
 onready var fade = get_node("CanvasLayer/Fade")
 onready var canvas_layer = get_node("CanvasLayer")
 onready var audio_player_music = get_node("AudioStreamPlayerMusic")
+onready var pause_gui = get_node("CanvasLayer/PauseGUI")
 
 var dialog_box: DialogBox = null
 
@@ -45,16 +46,7 @@ func turn_off_all_torches():
 #			obj.turn_off()
 
 func adjust_audio_levels():
-	# Mute music audio
-	if GameSettings.music_level == 0.0:
-		audio_player_music.volume_db = -500
-	else:
-		audio_player_music.volume_db = GlobalFunctions.map(
-			GameSettings.music_level,
-			0.0, 1.0,
-			GameSettings.min_music_volume_db,
-			GameSettings.max_music_volume_db
-		)
+	audio_player_music.volume_db = GameSettings.get_music_volume()
 
 func show_dialog_box(dialog: Array):
 	var node = GlobalLoaded.get_resource("Node-DialogBox").instance()

@@ -2,6 +2,7 @@ extends Node
 
 
 func _ready() -> void:
+	self.pause_mode = Node.PAUSE_MODE_PROCESS
 	pass
 
 func map(value, low1, high1, low2, high2):

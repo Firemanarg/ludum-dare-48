@@ -16,13 +16,17 @@ func _ready() -> void:
 	pass
 
 func play_choosing_sound():
+	adjust_audio_levels()
 	audio_player.stream = choosing_sound.duplicate()
 	audio_player.play()
 
 func play_selected_sound():
+	adjust_audio_levels()
 	audio_player.stream = selected_sound.duplicate()
 	audio_player.play()
 
+func adjust_audio_levels():
+	audio_player.volume_db = GameSettings.get_sound_volume()
 
 func play_action():
 	get_tree().change_scene_to( GlobalLoaded.get_resource("Scene-TestLevel") )

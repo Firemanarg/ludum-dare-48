@@ -12,6 +12,10 @@ var threads = []
 
 var loading_screen = null
 
+func _ready() -> void:
+	self.pause_mode = Node.PAUSE_MODE_PROCESS
+	pass
+
 func get_resource(_name: String):
 	return loaded_resources.get(_name)
 

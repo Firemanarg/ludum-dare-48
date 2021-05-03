@@ -20,12 +20,17 @@ func initialize_values():
 	slider_music.value = GameSettings.music_level
 
 func play_choosing_sound():
+	adjust_audio_levels()
 	audio_player.stream = choosing_sound.duplicate()
 	audio_player.play()
 
 func play_selected_sound():
+	adjust_audio_levels()
 	audio_player.stream = selected_sound.duplicate()
 	audio_player.play()
+
+func adjust_audio_levels():
+	audio_player.volume_db = GameSettings.get_sound_volume()
 
 func back_to_title_screen():
 	get_tree().change_scene_to( GlobalLoaded.get_resource("Scene-TitleScreen") )
@@ -49,5 +54,5 @@ func _on_HSliderSound_value_changed(value: float) -> void:
 
 
 func _on_HSliderMusic_value_changed(value: float) -> void:
-	GameSettings.sound_level = value
+	GameSettings.music_level = value
 	pass

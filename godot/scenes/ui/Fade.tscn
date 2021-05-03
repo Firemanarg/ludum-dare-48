@@ -3,6 +3,7 @@
 [ext_resource path="res://scripts/ui/Fade.gd" type="Script" id=1]
 
 [node name="Fade" type="ColorRect"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0 )
