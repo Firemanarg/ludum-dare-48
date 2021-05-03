@@ -23,6 +23,7 @@ position = Vector2( 139.185, 139.185 )
 position_list = PoolVector2Array( 139, 139 )
 
 [node name="InteractableTorch" parent="Objects" index="2" instance=ExtResource( 9 )]
+is_enabled = true
 
 [node name="AudioStreamPlayerMusic" parent="." index="3"]
 stream = ExtResource( 8 )

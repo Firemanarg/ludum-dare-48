@@ -84,6 +84,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/ui/LoadingScreen.gd"
 }, {
+"base": "Node",
+"class": "LoadingThread",
+"language": "GDScript",
+"path": "res://scripts/Loading/LoadingThread.gd"
+}, {
 "base": "Control",
 "class": "OptionsScreen",
 "language": "GDScript",
@@ -120,6 +125,7 @@ _global_script_class_icons={
 "InteractiveLightSource": "",
 "LightSource": "",
 "LoadingScreen": "",
+"LoadingThread": "",
 "OptionsScreen": "",
 "Player": "",
 "PlayerLightSource": "",
