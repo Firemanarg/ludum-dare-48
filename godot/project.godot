@@ -148,7 +148,6 @@ config/icon="res://icon.png"
 
 GlobalFunctions="*res://scripts/Globals/GlobalFunctions.gd"
 LevelManager="*res://scripts/Globals/LevelManager.gd"
-ResourceQueue="*res://scripts/Globals/resource_queue.gd"
 GlobalLoaded="*res://scripts/Globals/GlobalLoaded.gd"
 GameSettings="*res://scripts/Globals/GameSettings.gd"
 
@@ -217,4 +216,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 environment/default_environment="res://default_env.tres"
