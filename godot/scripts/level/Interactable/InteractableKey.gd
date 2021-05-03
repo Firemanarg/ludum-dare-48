@@ -6,5 +6,5 @@ func _ready() -> void:
 	pass
 
 func interact() -> void:
-	LevelManager.picked_up_the_key = true
+	LevelManager.pickup_key()
 	self.queue_free()

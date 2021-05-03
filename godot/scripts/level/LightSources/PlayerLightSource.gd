@@ -12,15 +12,15 @@ func _process(delta: float) -> void:
 	var light_off = Input.is_action_just_pressed("light_turn_off")
 
 	if step_up:
-		var radius = get_radius()
+		var radius = get_image_scale_by_step()
 		current_step = clamp(current_step + 1, 0, light_steps-1)
-		var new_radius = clamp(get_radius(current_step), min_radius, max_radius)
+		var new_radius = clamp(get_image_scale_by_step(current_step), min_radius, max_radius)
 		radius_transition(radius, new_radius)
 		print("step -> ", current_step)
 	if step_down:
-		var radius = get_radius()
+		var radius = get_image_scale_by_step()
 		current_step = clamp(current_step - 1, 0, light_steps-1)
-		var new_radius = clamp(get_radius(current_step), min_radius, max_radius)
+		var new_radius = clamp(get_image_scale_by_step(current_step), min_radius, max_radius)
 		radius_transition(radius, new_radius)
 		print("step -> ", current_step)
 	if light_off:

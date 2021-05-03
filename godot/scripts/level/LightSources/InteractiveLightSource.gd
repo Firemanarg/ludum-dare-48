@@ -13,13 +13,11 @@ func _ready() -> void:
 
 func turn_on():
 	self.visible = true
-	radius_transition(0.0, get_radius())
+	radius_transition(0.0, get_image_scale_by_step())
 
 	consume_timer.wait_time = lifetime
 	consume_timer.start()
 
-func map(value, low1, high1, low2, high2):
-	return low2 + (value - low1) * (high2 - low2) / (high1 - low1)
 #func set_radius(radius: float):
 #	var fixed_radius = clamp(radius, min_radius, max_radius)
 #	return Global.map(fixed_radius, min_radius, max_radius, 0, light_steps-1)

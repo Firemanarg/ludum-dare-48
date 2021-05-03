@@ -8,8 +8,8 @@ func _ready() -> void:
 	pass
 
 func interact() -> void:
-	if LevelManager.picked_up_the_key:
-		LevelManager.picked_up_the_key = false
+	if LevelManager.is_key_picked_up():
+		LevelManager.reset_key_pickup()
 		self.queue_free()
 	else:
 		LevelManager.show_dialog_box(no_key_dialog)

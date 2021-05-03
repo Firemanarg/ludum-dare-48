@@ -19,7 +19,7 @@ func _ready() -> void:
 	update_LevelManager_light_sources()
 	update_LevelManager_enemies()
 	LevelManager.nav_2d = get_node("Tilemaps")
-	LevelManager.Enemy = get_node("Objects/Enemy")
+	LevelManager.enemy = get_node("Objects/Enemy")
 	LevelManager._playerLife = 1
 #	LevelManager.light_sources.append(get_node("InteractiveLightSource"))
 #	LevelManager.light_sources.append(get_node("InteractiveLightSource2"))

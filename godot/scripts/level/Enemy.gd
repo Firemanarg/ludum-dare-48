@@ -81,7 +81,7 @@ func _on_Timer_timeout() -> void:
 func is_light_source_on_range(light_source: LightSource):
 	var distance = self.transform.origin.distance_to(LevelManager.player.transform.origin)
 
-	vision_range = light_source.get_radius_converted()
+	vision_range = light_source.get_radius()
 
 	var comparison = distance <= vision_range and light_source.is_enabled
 	#print("Distance: ", distance, " | Comparison: ", comparison)
