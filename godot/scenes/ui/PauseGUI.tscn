@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/fonts/ink-free-normal.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/textures/ui/base_button.png" type="Texture" id=2]
 [ext_resource path="res://assets/textures/ui/slider_ball.png" type="Texture" id=3]
 [ext_resource path="res://assets/Fonts/ink-free-normal.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://scripts/ui/PauseGUI.gd" type="Script" id=5]
+[ext_resource path="res://assets/audio/System sounds/Menu/Pause and Unpause.wav" type="AudioStream" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0470588, 0.0470588, 0.0470588, 1 )
@@ -229,6 +230,9 @@ text = "Back"
 [node name="Tween" type="Tween" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioPlayerAppear" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
 
 [connection signal="value_changed" from="ContainerPauseGUI/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer3/VBoxContainer/HSliderSound" to="." method="_on_HSliderSound_value_changed"]
 [connection signal="value_changed" from="ContainerPauseGUI/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer3/VBoxContainer2/HSliderMusic" to="." method="_on_HSliderMusic_value_changed"]

@@ -7,9 +7,18 @@ onready var fade = get_node("CanvasLayer/Fade")
 onready var canvas_layer = get_node("CanvasLayer")
 onready var audio_player_music = get_node("AudioStreamPlayerMusic")
 onready var pause_gui = get_node("CanvasLayer/PauseGUI")
+onready var tilemap_ground = get_node("Tilemaps/TileMapGround")
+onready var tilemap_wall = get_node("Tilemaps/TileMapWall")
+onready var label_material = get_node("CanvasLayer/LabelGroundMaterial")
 
 var dialog_box: DialogBox = null
 
+enum ground_tiles {
+	NO_TILE=-1,
+	GRASS,
+	DIRT,
+	STONE
+}
 
 func _ready() -> void:
 	adjust_audio_levels()
@@ -37,6 +46,28 @@ func _process(delta: float) -> void:
 		if dialog_box.has_finished():
 			dialog_box.queue_free()
 			dialog_box = null
+
+func get_tile_under_player() -> int:
+	if LevelManager.player:
+		var player_coords = LevelManager.player.transform.origin
+		var tile_size = tilemap_ground.cell_size
+		var tile_coords = player_coords / tile_size
+		tile_coords.x = int(floor(tile_coords.x))
+		tile_coords.y = int(floor(tile_coords.y))
+		var tile = tilemap_ground.get_cell(tile_coords.x, tile_coords.y)
+		match tile:
+			ground_tiles.GRASS:
+				label_material.text = "GRASS"
+			ground_tiles.DIRT:
+				label_material.text = "DIRT"
+			ground_tiles.STONE:
+				label_material.text = "STONE"
+			_:
+				label_material.text = "INVALID MATERIAL"
+
+
+		return tile
+	return ground_tiles.NO_TILE
 
 func turn_off_all_torches():
 	for obj in objects.get_children():

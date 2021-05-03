@@ -32,3 +32,5 @@ radius = 1.8
 visible = false
 texture = ExtResource( 5 )
 texture_scale = 1.8
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="." index="4"]

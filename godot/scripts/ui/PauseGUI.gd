@@ -10,6 +10,7 @@ onready var slider_music = get_node("ContainerPauseGUI/PanelContainer/MarginCont
 onready var button_back = get_node("ContainerPauseGUI/PanelContainer/MarginContainer/VBoxContainer/CenterContainerBack/ButtonBack")
 onready var tween = get_node("Tween")
 onready var audio_player = get_node("AudioStreamPlayer")
+onready var audio_player_appear = get_node("AudioPlayerAppear")
 
 export var anim_speed = 0.5
 onready var initial_position = Vector2(-main_container.rect_size.x, 0)
@@ -37,8 +38,10 @@ func play_selected_sound():
 
 func adjust_audio_levels():
 	audio_player.volume_db = GameSettings.get_sound_volume()
+	audio_player_appear.volume_db = GameSettings.get_sound_volume()
 
 func show():
+	audio_player_appear.play()
 	slider_sound.value = GameSettings.get_sound_level()
 	slider_music.value = GameSettings.get_music_level()
 	self.visible = true
@@ -47,6 +50,7 @@ func show():
 	pass
 
 func hide():
+	audio_player_appear.play()
 	is_hide_pending = true
 	main_container.rect_position = target_position
 	interpolate_position(target_position, initial_position)

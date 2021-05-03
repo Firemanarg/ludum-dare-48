@@ -13,6 +13,7 @@ func _ready() -> void:
 
 func turn_on():
 	self.visible = true
+	emit_signal("turned_on")
 	radius_transition(0.0, get_image_scale_by_step())
 
 	consume_timer.wait_time = lifetime

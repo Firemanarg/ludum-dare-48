@@ -159,3 +159,5 @@ anims/walk_left = ExtResource( 10 )
 anims/walk_right = SubResource( 4 )
 
 [node name="PlayerLightSource" parent="." instance=ExtResource( 3 )]
+
+[node name="StepsSoundAudioPlayer" type="AudioStreamPlayer2D" parent="."]

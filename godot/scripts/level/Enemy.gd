@@ -1,19 +1,21 @@
 extends KinematicBody2D
 class_name Enemy
 
-var speed : = 250.0
+onready var timer = get_node("Timer")
+onready var animation_player = get_node("AnimationPlayer")
+
+export var speed : = 250.0
+export var seek_delay : int = 2
+export var position_list: PoolVector2Array
+export var vision_range = 100
+export var is_enabled = true
 var path : = PoolVector2Array() setget set_path
 var next_patrol_position : = self.transform.origin
-onready var timer = get_node("Timer")
-export var seek_delay : int = 2
 var last_seen = null
 var seek = false
-export var position_list: PoolVector2Array
 var i : int = 0
 var last_axis = Vector2(1,0)
-onready var animation_player = get_node("AnimationPlayer")
 var patrol: bool = false
-var vision_range = 100
 
 func _ready() -> void:
 	pass
@@ -23,22 +25,35 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if LevelManager.current_level:
-		var move_distance = speed * delta
-		move_along_path(move_distance)
-		light_detect()
-		patrol()
+	if is_enabled:
+		if LevelManager.current_level:
+			var move_distance = speed * delta
+			move_along_path(move_distance)
+			light_detect()
+			patrol()
 
-		if self.transform.origin == last_seen:
-			if seek == false:
-	#			print("ainnn entro")
-				timer.wait_time = seek_delay
-				seek = true
-				timer.start()
-	else:
-		if not animation_player.is_playing():
-			animation_player.play("walk_foward")
+			if self.transform.origin == last_seen:
+				if seek == false:
+		#			print("ainnn entro")
+					timer.wait_time = seek_delay
+					seek = true
+					timer.start()
+		else:
+			if not animation_player.is_playing():
+				animation_player.play("walk_foward")
 
+
+func set_enabled(state: bool):
+	is_enabled = state
+
+func is_enabled():
+	return is_enabled()
+
+func add_patrol_destination(destination: Vector2):
+	position_list.append(destination)
+
+func insert_patrol_destination(index: int, destination: Vector2):
+	position_list.insert(index, destination)
 
 func move_along_path(distance : float) -> void:
 	var last_point : = position

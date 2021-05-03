@@ -14,6 +14,9 @@ var current_step: int = 1
 var light_steps: int = 5
 export var is_enabled: bool = true
 
+signal turned_on
+signal turned_off
+
 func _ready() -> void:
 	timer.connect("timeout", self, "on_timer_timeout")
 	tween.connect("tween_completed", self, "on_tween_completed")
@@ -51,12 +54,14 @@ func turn_on():
 		self.visible = true
 		radius_transition(0.0, get_image_scale_by_step())
 		is_enabled = true
+		emit_signal("turned_on")
 
 func turn_off():
 	if self.visible:
 		radius_transition(get_image_scale_by_step(), 0.0)
 		timer.wait_time = tween_duration
 		timer.start()
+		emit_signal("turned_off")
 
 func on_timer_timeout():
 	self.visible = false
