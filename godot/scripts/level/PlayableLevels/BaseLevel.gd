@@ -31,6 +31,7 @@ func _ready() -> void:
 	LevelManager.nav_2d = get_node("Tilemaps")
 	LevelManager.enemy = get_node("Objects/Enemy")
 	LevelManager._playerLife = 1
+#	player.connect("collided_with_enemy", self, "generate_jumpscare")
 #	LevelManager.light_sources.append(get_node("InteractiveLightSource"))
 #	LevelManager.light_sources.append(get_node("InteractiveLightSource2"))
 #	custom_sign.connect("interacted", self, "show_textbox")
@@ -46,6 +47,15 @@ func _process(delta: float) -> void:
 		if dialog_box.has_finished():
 			dialog_box.queue_free()
 			dialog_box = null
+
+func generate_jumpscare(enemy: Enemy):
+	if LevelManager.get_player_life() > 0:
+		var jumpscare = GlobalLoaded.get_resource("Node-BaseJumpscare").instance()
+		jumpscare.enemy = enemy
+		canvas_layer.add_child(jumpscare)
+		jumpscare = canvas_layer.get_child( canvas_layer.get_child_count() - 1 )
+		jumpscare.show()
+	pass
 
 func get_tile_under_player() -> int:
 	if LevelManager.player:

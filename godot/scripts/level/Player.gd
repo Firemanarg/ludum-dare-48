@@ -11,10 +11,12 @@ var motion: = Vector2.ZERO
 var last_axis: = Vector2(1,0)
 
 var step_sounds = {
-	str(BaseLevel.ground_tiles.GRASS): preload("res://assets/audio/Character Sounds/Walking/Grass/PlayerStepsOnGrass.wav"),
-	str(BaseLevel.ground_tiles.STONE): preload("res://assets/audio/Character Sounds/Walking/Concrete/PlayerStepsOnConcrete.wav"),
-	str(BaseLevel.ground_tiles.DIRT): preload("res://assets/audio/Character Sounds/Walking/Water/PlayerStepsOnWater.wav")
+	str(BaseLevel.ground_tiles.GRASS): preload("res://assets/audio/Player/Walking/Grass/PlayerStepsOnGrass.wav"),
+	str(BaseLevel.ground_tiles.STONE): preload("res://assets/audio/Player/Walking/Concrete/PlayerStepsOnConcrete.wav"),
+	str(BaseLevel.ground_tiles.DIRT): preload("res://assets/audio/Player/Walking/Water/PlayerStepsOnWater.wav")
 }
+
+signal collided_with_enemy(enemy)
 
 func _physics_process(delta):
 	var axis = get_input_axis()
@@ -27,7 +29,8 @@ func _physics_process(delta):
 	for i in get_slide_count():
 		var collider = get_slide_collision(i).collider
 		if collider is Enemy:
-			take_damage()
+			LevelManager.deal_damage_to_player(collider)
+			emit_signal("collided_with_enemy", collider)
 
 func update_step_sound():
 	if LevelManager.current_level:
@@ -42,7 +45,6 @@ func set_step_sound(ground_tile: int):
 func play_step_sound():
 #	if steps_audio_player.stream and not steps_audio_player.playing:
 	if steps_audio_player.stream and not steps_audio_player.playing:
-		print("Beginning play steps sound")
 		steps_audio_player.play()
 
 func get_input_axis():
@@ -105,9 +107,9 @@ func apply_movement(acceleration):
 	motion = motion.clamped(MAX_SPEED)
 	if motion.length() > MAX_SPEED:
 		motion = motion.normalized() * MAX_SPEED
-
-func take_damage():
-	if LevelManager._playerLife > 0:
-		LevelManager._playerLife -= 1
-		print("You died !!!")
+#
+#func take_damage():
+#	if LevelManager._playerLife > 0:
+#		LevelManager._playerLife -= 1
+#		print("You died !!!")
 

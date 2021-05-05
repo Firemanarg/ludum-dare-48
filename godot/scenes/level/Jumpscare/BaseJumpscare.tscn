@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/textures/enemy/jumpscare/jumpscare_01.png" type="Texture" id=1]
+[ext_resource path="res://assets/textures/enemy/jumpscare/jumpscare_02.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/enemy/jumpscare/jumpscare_03.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/enemy/jumpscare/jumpscare_04.png" type="Texture" id=4]
+[ext_resource path="res://assets/audio/Enemy/jumpscare/EnemyJumpscare.wav" type="AudioStream" id=5]
+[ext_resource path="res://scripts/level/Jumpscare/BaseJumpscare.gd" type="Script" id=6]
+[ext_resource path="res://scenes/ui/Fade.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Animation" id=2]
+resource_name = "jumpscare_first"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("EnemyImage:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "jumpscare_keep_on_screen"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("EnemyImage:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "jumpscare_show"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("EnemyImage:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ]
+}
+
+[node name="BaseJumpscare" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fade" parent="." instance=ExtResource( 7 )]
+target_color = Color( 0.678431, 0.678431, 0.678431, 1 )
+
+[node name="EnemyImage" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimerInitialDelay" type="Timer" parent="."]
+
+[node name="TimerDuration" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/jumpscare_first = SubResource( 2 )
+anims/jumpscare_keep_on_screen = SubResource( 3 )
+anims/jumpscare_show = SubResource( 1 )
+
+[connection signal="timeout" from="TimerInitialDelay" to="." method="_on_TimerInitialDelay_timeout"]
+[connection signal="timeout" from="TimerDuration" to="." method="_on_TimerDuration_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

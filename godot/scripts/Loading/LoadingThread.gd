@@ -35,7 +35,7 @@ func _thread_load(path):
 
 
 func _thread_done(resource):
-	print("Thread done: ", resource)
+	print("Thread done: ", resources_name, " [", resource, "]")
 	assert(resource)
 
 	# Always wait for threads to finish, this is required on Windows.

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/EnemyNearPlayerUndetected.wav-f462f584759d67b72e38a4a20225bd5a.sample"
+
+[deps]
+
+source_file="res://assets/audio/Enemy/jumpscare/EnemyNearPlayerUndetected.wav"
+dest_files=[ "res://.import/EnemyNearPlayerUndetected.wav-f462f584759d67b72e38a4a20225bd5a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

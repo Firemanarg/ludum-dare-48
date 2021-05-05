@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Player Scared gasps.wav-2b3c20f2e3d9fb893aadde5d197a5638.sample"
+
+[deps]
+
+source_file="res://assets/audio/Player/Character Gasps/post scare/Player Scared gasps.wav"
+dest_files=[ "res://.import/Player Scared gasps.wav-2b3c20f2e3d9fb893aadde5d197a5638.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -12,6 +12,8 @@ var current_level = null
 
 var is_game_active = true
 
+var jumpscare_in_progress = false
+
 func _ready() -> void:
 	self.pause_mode = Node.PAUSE_MODE_PROCESS
 	pass
@@ -27,26 +29,35 @@ func _process(delta: float) -> void:
 				unpause_game()
 	pass
 
+func is_jumpscare_in_progress():
+	return jumpscare_in_progress
+
 func is_game_active():
 	return is_game_active
 
 func set_game_active(state: bool):
 	is_game_active = state
 
+func deal_damage_to_player(enemy: Enemy):
+	current_level.generate_jumpscare(enemy)
+	LevelManager.set_player_life(0)
+
 func pause_game():
 	is_game_active = false
 	if current_level:
 		current_level.get_tree().paused = true
-		current_level.pause_gui.show()
-		current_level.fade.fade_out()
+		if not is_jumpscare_in_progress():
+			current_level.pause_gui.show()
+			current_level.fade.fade_out()
 #		current_level.pause_mode = Node.PAUSE_MODE_STOP
 
 func unpause_game():
 	is_game_active = true
 	if current_level:
 		current_level.get_tree().paused = false
-		current_level.pause_gui.hide()
-		current_level.fade.fade_in()
+		if not is_jumpscare_in_progress():
+			current_level.pause_gui.hide()
+			current_level.fade.fade_in()
 #		current_level.pause_mode = Node.PAUSE_MODE_INHERIT
 
 func show_dialog_box(dialog):
